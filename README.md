@@ -21,6 +21,7 @@ The following files are **not** covered by the CC BY 4.0 license above. They rem
 | `figures/metz2025-fig1-identification-probability.png` | Metz et al., *Analytical Chemistry* (2025), Figure 1, [doi:10.1021/acs.analchem.4c04060](https://doi.org/10.1021/acs.analchem.4c04060) | © the original authors / American Chemical Society |
 | `figures/metaboanalyst6-logo.png`, `figures/metaboanalyst7-logo.png` | [MetaboAnalyst](https://www.metaboanalyst.ca) | © Xia Lab, McGill University |
 | `figures/metaboanalyst6-modules.png`, `figures/metaboanalyst7-modules.png` | Screenshots of [MetaboAnalyst](https://www.metaboanalyst.ca) | © Xia Lab, McGill University |
+| `figures/watermark.png`, `figures/watermark-lines.png` | Illustration by E. H. Shepard for A. A. Milne's *Winnie-the-Pooh* (1926); upscaled and traced | Public domain in the United States since 2022; may still be under copyright in other jurisdictions |
 
 ## How to attribute
 
