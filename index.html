@@ -1,0 +1,811 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metabolomics Analysis</title>
+
+  <link rel="stylesheet" href="vendor/reveal/reset.css">
+  <link rel="stylesheet" href="vendor/reveal/reveal.css">
+  <link rel="stylesheet" href="vendor/reveal/theme/moon.css">
+  <link rel="stylesheet" href="slides.css">
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- ========== 1. 封面 ========== -->
+<section class="center">
+  <div class="fill">
+    <h1>Metabolomics Analysis</h1>
+    <h3>Speaker: Dr. Shang-Che Kuo</h3>
+    <h3>Date: 2026-10-21</h3>
+  </div>
+</section>
+
+<!-- ========== 2. MS 分析平台組成 ========== -->
+<section>
+  <h2>Recall: Configuration of MS-Based Analytical Platform</h2>
+
+  <!-- 左上：範例論文 -->
+  <div class="abs instrument-panel paper" style="left:2%; top:11%; width:46%; height:30%">
+    <img src="figures/covid19-transomics-paper-cropped.png" alt="The trans-omics landscape of COVID-19 (Nat Commun 2021)">
+    <p><a href="https://doi.org/10.1038/s41467-021-24482-1">https://doi.org/10.1038/s41467-021-24482-1</a></p>
+  </div>
+
+  <!-- 右上：本次使用的組合 -->
+  <div class="abs method-cards featured" style="left:49.5%; top:17%; width:50.5%; height:68%">
+    <div class="method-card"><img src="figures/sep-lc.png" alt=""><span>LC</span></div>
+    <div class="method-card"><img src="figures/ion-esi.png" alt=""><span>ESI</span></div>
+    <div class="method-card"><img src="figures/ms-quadrupole.png" alt=""><span>Quadrupole</span></div>
+    <div class="method-card"><img src="figures/ms-orbitrap.png" alt=""><span>Orbitrap</span></div>
+    <div class="method-card"><img src="figures/scan-dda.png" alt=""><span>DDA</span></div>
+  </div>
+
+  <!-- 分組標題 -->
+  <div class="abs group-title" style="left:1%; top:42%; width:18%; height:7%"><p>Chromatography<br>Electrophoresis</p></div>
+  <div class="abs group-title" style="left:22%; top:42%; width:27%; height:7%"><p>Ionization</p></div>
+  <div class="abs group-title" style="left:52%; top:42%; width:18%; height:7%"><p>MS<br>MS/MS</p></div>
+  <div class="abs group-title" style="left:72%; top:42%; width:27%; height:7%"><p>Scan mode<br>Acquisition mode</p></div>
+
+  <!-- 第 1 欄：分離 -->
+  <div class="abs method-cards" style="left:1%; top:52%; width:18%; height:68%">
+    <div class="method-card"><img src="figures/sep-lc.png" alt=""><span>LC</span></div>
+    <div class="method-card"><img src="figures/sep-gc.png" alt=""><span>GC</span></div>
+    <div class="method-card"><img src="figures/sep-ce.png" alt=""><span>CE</span></div>
+    <div class="method-card"><img src="figures/sep-sfc.png" alt=""><span>SFC</span></div>
+  </div>
+
+  <!-- 第 2 欄：離子化 -->
+  <div class="abs method-cards" style="left:22%; top:52%; width:27%; height:68%">
+    <div class="method-card"><img src="figures/ion-ei.png" alt=""><span>EI</span></div>
+    <div class="method-card"><img src="figures/ion-ci.png" alt=""><span>CI</span></div>
+    <div class="method-card"><img src="figures/ion-icp.png" alt=""><span>ICP</span></div>
+    <div class="method-card"><img src="figures/ion-esi.png" alt=""><span>ESI</span></div>
+    <div class="method-card"><img src="figures/ion-apci.png" alt=""><span>APCI</span></div>
+    <div class="method-card"><img src="figures/ion-appi.png" alt=""><span>APPI</span></div>
+    <div class="method-card"><img src="figures/ion-maldi.png" alt=""><span>MALDI</span></div>
+    <div class="method-card"><img src="figures/ion-desi.png" alt=""><span>DESI</span></div>
+  </div>
+
+  <!-- 第 3 欄：質量分析器 -->
+  <div class="abs method-cards" style="left:52%; top:52%; width:18%; height:68%">
+    <div class="method-card"><img src="figures/ms-tof.png" alt=""><span>TOF</span></div>
+    <div class="method-card"><img src="figures/ms-quadrupole.png" alt=""><span>Quadrupole</span></div>
+    <div class="method-card"><img src="figures/ms-2d-ion-trap.png" alt=""><span>2D Ion Trap</span></div>
+    <div class="method-card"><img src="figures/ms-3d-ion-trap.png" alt=""><span>3D Ion Trap</span></div>
+    <div class="method-card"><img src="figures/ms-orbitrap.png" alt=""><span>Orbitrap</span></div>
+  </div>
+
+  <!-- 第 4 欄：掃描／擷取模式（由上往下排） -->
+  <div class="abs method-cards col" style="left:72%; top:52%; width:27%; height:51%">
+    <div class="method-card"><img src="figures/scan-product-ion.png" alt=""><span>Product ion</span></div>
+    <div class="method-card"><img src="figures/scan-mrm.png" alt=""><span>MRM</span></div>
+    <div class="method-card"><img src="figures/scan-dda.png" alt=""><span>DDA</span></div>
+    <div class="method-card"><img src="figures/scan-precursor-ion.png" alt=""><span>Precursor ion</span></div>
+    <div class="method-card"><img src="figures/scan-prm.png" alt=""><span>PRM</span></div>
+    <div class="method-card"><img src="figures/scan-dia.png" alt=""><span>DIA</span></div>
+    <div class="method-card"><img src="figures/scan-neutral-loss.png" alt=""><span>Neutral loss</span></div>
+  </div>
+</section>
+
+<!-- 第 3 頁起以 Markdown 撰寫：
+     每個 <section data-markdown> 是一頁，內容寫在 <textarea data-template> 裡。
+     圖片寬度：在 ![](figures/圖檔.png) 後面加一個 HTML 註解，內容寫 .element: style="height: 180px"。 -->
+
+<!-- ##### 垂直組：第 3–5 頁　資料型態：MS1 → MS2 → 特徵表（↓ 往下翻） ##### -->
+<section>
+
+<!-- ========== 3. LC-MS 資料：MS1 三維示意 ========== -->
+<!-- 3 → 4 原地淡入淡出：兩頁的圖位置相同，看起來像 MS2 直接疊上去 -->
+<section class="figslide" data-transition="slide-in fade-out">
+  <h2>Data Type and Variables</h2>
+  <h3>LC-MS 資料的三個維度：滯留時間 × m/z × 強度（MS1）</h3>
+  <div class="fig-row">
+    <figure>
+      <img src="figures/lcms-ms1-3d.png" alt="LC-MS 三維示意圖：層析圖與選定滯留時間的 MS1 質譜">
+    </figure>
+    <div class="dim-panel">
+      <div class="dim-title">MS1 資料的維度</div>
+      <div class="dim"><span class="dim-no">①</span><div><b>滯留時間（RT）</b>層析分離的先後</div></div>
+      <div class="dim"><span class="dim-no">②</span><div><b>m/z</b>離子的質荷比</div></div>
+      <div class="dim"><span class="dim-no">③</span><div><b>強度（Intensity／Area）</b>定量的依據</div></div>
+      <div class="dim-views">
+        <div><b>Chromatogram</b>RT × 強度（TIC／XIC），觀察峰型</div>
+        <div><b>MS1 質譜</b>某個 RT 下的 m/z × 強度</div>
+        <div><b>特徵</b>m/z＋RT 的組合，用於定量</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>左側紫色曲線是層析圖（chromatogram），沿滯留時間記錄訊號強度。在選定的滯留時間點切開，就得到該時刻的 MS1 質譜（m/z 對強度）。每一個「m/z × 滯留時間」組合的峰，經前處理後就成為特徵表中的一個特徵。</p>
+    <p>右側面板整理 MS1 資料的三個維度：RT、m/z、強度。若儀器有離子遷移（如 timsTOF、FAIMS），漂移時間或 CCS 會是額外的一維，可口頭補充。對應的變數：MS1 資料為 m/z、RT、Intensity、Area，用於定量與描繪層析圖；層析圖分為 TIC（總離子流）與 XIC（萃取離子層析圖）。</p>
+  </aside>
+</section>
+
+<!-- ========== 4. LC-MS 資料：MS2 碎片譜示意 ========== -->
+<section class="figslide" data-transition="fade-in slide-out">
+  <h2>Data Type and Variables</h2>
+  <h3>選定前驅離子 → 隔離與碎裂 → MS2 碎片譜</h3>
+  <div class="fig-row">
+    <figure>
+      <img src="figures/lcms-ms2-precursor-fragment.png" alt="LC-MS/MS 示意圖：選定前驅離子，經 HCD 碎裂得到 MS2 碎片譜">
+    </figure>
+    <div class="dim-panel">
+      <div class="dim-title">MS2 再加上兩維</div>
+      <div class="dim-carry">沿用 MS1 的 ① RT、② m/z、③ 強度</div>
+      <div class="dim new"><span class="dim-no">④</span><div><b>前驅離子 m/z</b>被選來碎裂的離子，連回 MS1 的特徵</div></div>
+      <div class="dim new"><span class="dim-no">⑤</span><div><b>碎片離子 m/z 與強度</b>碎裂後的「指紋」</div></div>
+      <div class="dim-views">
+        <div><b>用途</b>比對光譜庫、推定結構（鑑定）</div>
+        <div><b>DDA</b>依強度逐一挑選前驅離子，光譜乾淨但涵蓋較少</div>
+        <div><b>DIA</b>一段 m/z 範圍一起碎裂，涵蓋較廣但須解卷積</div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <p>在 MS1 質譜中選定一個前驅離子（綠色圓圈），經四極柱隔離後以 HCD 碎裂，得到該離子的 MS2 碎片譜。MS1 提供定量用的強度，MS2 提供鑑定用的碎片資訊。</p>
+    <p>MS2 在 MS1 的維度上再加兩維：前驅離子 m/z（每張 MS2 都綁定一個前驅離子與它的 RT），以及碎片離子 m/z 與碎片強度。對應的變數：Precursor m/z、Fragment m/z、Fragment Intensity，用於代謝物鑑定與比對資料庫。</p>
+    <p>DDA 會依強度自動挑選前驅離子逐一碎裂，光譜乾淨但涵蓋的特徵較少；DIA 則把一段 m/z 範圍內的離子一起碎裂，涵蓋廣但需要解卷積（見分析流程頁）。</p>
+  </aside>
+</section>
+
+<!-- ========== 5. Feature Table 示意 ========== -->
+<section class="ftable">
+  <h2>Feature Table</h2>
+  <h3>特徵表：前處理後得到的資料矩陣（示意數值）</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">特徵（m/z @ RT）</th>
+        <th rowspan="2">註解（鑑定等級）</th>
+        <th class="grp">空白</th>
+        <th class="grp" colspan="2">Pooled QC</th>
+        <th class="grp" colspan="3">對照組</th>
+        <th class="grp" colspan="3">病例組</th>
+        <th rowspan="2">QC RSD</th>
+      </tr>
+      <tr>
+        <th>Blank</th><th>QC1</th><th>QC2</th>
+        <th>Ctrl1</th><th>Ctrl2</th><th>Ctrl3</th>
+        <th>Case1</th><th>Case2</th><th>Case3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="phe"><td><b>F1</b> 166.0863 @ 4.21</td><td>苯丙胺酸 [M+H]⁺（L1）</td><td class="na">—</td><td>210</td><td>206</td><td>162</td><td>175</td><td>168</td><td>295</td><td>310</td><td>288</td><td>1.4%</td></tr>
+      <tr class="phe"><td><b>F2</b> 188.0682 @ 4.21</td><td>苯丙胺酸 [M+Na]⁺</td><td class="na">—</td><td>31</td><td>30</td><td>24</td><td>26</td><td>25</td><td>44</td><td>47</td><td>43</td><td>2.3%</td></tr>
+      <tr class="phe"><td><b>F3</b> 167.0896 @ 4.21</td><td>F1 的 ¹³C 同位素峰</td><td class="na">—</td><td>21</td><td>20</td><td>16</td><td>18</td><td>17</td><td>30</td><td>31</td><td>29</td><td>3.4%</td></tr>
+      <tr class="phe"><td><b>F4</b> 120.0808 @ 4.21</td><td>苯丙胺酸的源內碎片</td><td class="na">—</td><td>12</td><td>11</td><td>9</td><td>10</td><td>9</td><td>17</td><td>18</td><td>16</td><td>6.1%</td></tr>
+      <tr><td><b>F5</b> 132.1019 @ 3.05</td><td>白胺酸或異白胺酸（L3）</td><td class="na">—</td><td>88</td><td>85</td><td>90</td><td>84</td><td>92</td><td>87</td><td>83</td><td>89</td><td>2.5%</td></tr>
+      <tr><td><b>F6</b> 245.0921 @ 6.37</td><td>未知（L5）</td><td class="na">—</td><td>4.1</td><td>2.2</td><td class="na">—</td><td>3.0</td><td class="na">—</td><td>6.5</td><td class="na">—</td><td>5.8</td><td class="bad">42.7%</td></tr>
+      <tr><td><b>F7</b> 301.1414 @ 8.90</td><td>背景污染</td><td class="bad">52</td><td>50</td><td>53</td><td>49</td><td>51</td><td>50</td><td>52</td><td>48</td><td>51</td><td>4.1%</td></tr>
+    </tbody>
+  </table>
+  <p class="ft-unit">格子內為峰面積（×10⁴）；— 表示未偵測到</p>
+
+  <div class="ft-notes">
+    <div><b>怎麼讀</b>每一列是一個特徵（m/z × 滯留時間），每一欄是一個樣本；統計軟體常需轉置成「樣本 × 特徵」</div>
+    <div><b>一個代謝物 → 多個特徵</b>F1–F4 都來自苯丙胺酸（質子化、鈉加成、同位素、源內碎片），需歸併才不會重複計算</div>
+    <div><b>品質線索</b>F6 有遺漏值且 QC RSD 高、F7 在空白樣本也有訊號 → 在過濾階段移除</div>
+  </div>
+
+  <aside class="notes">
+    <p>這是教學用的示意表，數值為虛構，但 m/z 與 RSD 都可核算：苯丙胺酸 [M+H]⁺ 166.0863、[M+Na]⁺ 188.0682、¹³C 同位素峰 167.0896、源內碎片 C₈H₁₀N⁺ 120.0808；白胺酸／異白胺酸 [M+H]⁺ 132.1019。QC RSD 以兩針 QC 計算，只為示範；實務上應有足夠多的 pooled QC 注射。</p>
+    <ul>
+      <li>特徵表是第 ④ 階段（特徵偵測：峰偵測、對齊、補峰）的輸出，也是後續過濾、補值、標準化與統計的起點。</li>
+      <li>F1–F4 來自同一個代謝物：一個代謝物會因加成離子、同位素、源內碎片而產生多個特徵（Mahieu NG, Patti GJ. Anal Chem 2017. doi:10.1021/acs.analchem.7b02380）。CAMERA、MZmine 的離子網路（IIMN）、MS-DIAL 都能協助歸併。</li>
+      <li>F5 是同分異構物的例子：白胺酸與異白胺酸分子式相同，MS/MS 相近，沒有標準品比對 RT 時只能列為候選（Schymanski Level 3）。</li>
+      <li>F6：遺漏值多、QC RSD 42.7%，超過常見的 20%（非標靶探索常放寬到 30%）門檻，會被過濾（Broadhurst D, et al. Metabolomics 2018;14:72. doi:10.1007/s11306-018-1367-3）。</li>
+      <li>F7：空白樣本的訊號和真實樣本差不多，表示來自溶劑、管柱或器材的背景污染，會被空白樣本過濾移除。</li>
+      <li>格式：多數前處理軟體輸出「特徵 × 樣本」（列為特徵）；MetaboAnalyst 等統計工具可接受兩種方向，上傳時須指定樣本在列或在欄。</li>
+    </ul>
+  </aside>
+</section>
+
+</section>
+<!-- ##### 垂直組結束：第 3–5 頁 ##### -->
+
+<!-- ##### 垂直組：第 6–7 頁　代謝物鑑定信心（↓ 往下翻） ##### -->
+<section>
+
+<!-- ========== 6. 代謝物鑑定信心等級（定義＋實例） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide mid idmerged" -->
+## Identification Confidence
+
+### 以 m/z 166.0863 @ 4.2 min 為例（血清 LC-MS，逆相、正離子）
+
+| 等級 | MSI（Sumner 2007）：4 級 | Schymanski 2014：5 級 | 實例：需要哪些證據 → 報告時的寫法 |
+|---|---|---|---|
+| **1** | <strong>Identified</strong>：與標準品在相同條件下比對至少兩項正交資訊（如 RT＋MS/MS） | <strong>Confirmed structure</strong>：以標準品確認 MS、MS/MS 與 RT | 自行分析苯丙胺酸標準品，同管柱、同方法，RT 與 MS/MS 都吻合 →「苯丙胺酸（標準品確認）」；一般逆相管柱仍分不出 L／D 型 |
+| **2** | <strong>Putatively annotated</strong>：無標準品，依物化性質或光譜庫相似度推定 | <strong>Probable structure</strong>：2a 光譜庫比對且結果唯一；2b 診斷性證據 | MS/MS 與 MassBank 的苯丙胺酸光譜吻合，其他候選都對不上 →「推定為苯丙胺酸」（Schymanski 2a） |
+| **3** | <strong>Putatively characterized class</strong>：只能推定化合物類別 | <strong>Tentative candidate(s)</strong>：有候選結構但無法確定唯一 | MS/MS 碎片（m/z 120.0808、103.0542）相符，但同分異構物也可能產生 →「苯丙胺酸或其異構物」；MSI 只在能判斷類別時列為 3 |
+| **4** | <strong>Unknown</strong>：可區分、可定量，但未鑑定 | <strong>Unequivocal molecular formula</strong>：只確定分子式 | 同位素型態吻合、質量誤差 < 2 ppm →「C₉H₁₁NO₂」；MSI 沒有分子式這一級，仍為 Level 4 |
+| **5** | — | <strong>Exact mass of interest</strong>：只有精確質量 | 只有 m/z 166.0863，且組間有差異 →「m/z 166.0863 @ 4.2 min」；MSI 為 Level 4 |
+
+<p class="small">等級靠證據提升，不是換一套軟體；兩套系統從 Level 3 起定義不同，報告須註明採用哪一套；用文獻或其他實驗室的標準品資料，最高只算 Level 2。</p>
+
+Note:
+講解時可以由下往上讀：從 Level 5 只有精確質量開始，每多一項證據就往上升一級。
+
+實例是教學用的假設例子。化學數值可自行核算：苯丙胺酸 C₉H₁₁NO₂ 單一同位素質量 165.0790，[M+H]⁺ 理論值 166.0863；碎片 m/z 120.0808 為丟失 HCOOH 後的 C₈H₁₀N⁺，m/z 103.0542 為 C₈H₇⁺。
+
+- Sumner LW, et al. Metabolomics 2007;3(3):211–221. doi:10.1007/s11306-007-0082-2。四個等級與 Level 1 的條件見 p.218：至少兩項獨立、正交的資訊，與標準品在相同條件下比對；只用文獻或他實驗室的標準品資料只算 Level 2；超過兩項正交資訊更好（p.219）。
+- Schymanski EL, et al. Environ Sci Technol 2014;48:2097–2098. doi:10.1021/es5002105。Level 1–2 見 p.2097，Level 3–5 見 p.2098；2a 須光譜與結構的對應明確唯一；作者說 Level 3 相當於代謝體學說的 putative。
+- Level 1 的極限：一般逆相管柱分不出 L／D 型，即使標準品的 RT 與 MS/MS 都吻合，嚴格來說只確認到「苯丙胺酸」；要分辨鏡像異構物需要手性管柱。
+- 課堂例子：MetaboAnalyst 6.0 Protocol 的 Box 1 稱光譜庫比對為 level 2（MSI），Extended Data 又寫 level 2a（Schymanski），兩套等級混用。
+</textarea></section>
+
+<!-- ========== 7. 鑑定機率（Metz 2025） ========== -->
+<section class="metz">
+  <h2>Identification Probability</h2>
+  <h3>Metz et al., Anal Chem 2025</h3>
+
+  <div class="metz-row">
+    <figure>
+      <img src="figures/metz2025-fig1-identification-probability.png" alt="Metz 2025 Figure 1: identification probability concept">
+      <figcaption>Metz TO, et al. Anal Chem 2025;97(1):1–11, Figure 1（CC BY-NC-ND 4.0）</figcaption>
+    </figure>
+  </div>
+
+  <aside class="notes">
+    <p><b>講解重點</b></p>
+    <ul>
+      <li>定義：鑑定機率＝1／N；N 是在儀器精確度與設定的容許誤差內，資料庫中符合的分子數。</li>
+      <li>圖例：目標分子 4-amino-2-methylenebutanoic acid，資料庫為 HMDB 非脂質子集（22,007 種）。① 只比對分子式 → 9 個候選，0.11；② 加上質量 ±5 ppm、CCS ±1% → 7 個，0.14；③ 再加 MS/MS（cosine ≥ 850）→ 1 個，1.00。</li>
+      <li>為什麼提出：等級制度主觀、不易自動化與跨平台比較。</li>
+      <li>限制：資料庫太小會讓機率虛高；1.00 只代表資料庫中只剩一個候選，不等於標準品確認的 Level 1。</li>
+      <li>建議：與 MSI 等級並列回報，而非取代。</li>
+    </ul>
+    <p>圖的左半是傳統鑑定：把實驗資料（RT、MS/MS、離子遷移時間、NMR）和參考資料比對，最後由分析者判斷信心等級。右半是以機率為基礎的鑑定：每多加一個量測維度（① 分子式、② CCS、③ MS/MS），資料庫中符合的候選就越少，鑑定機率越高，而且整個過程可以自動計算。</p>
+    <ul>
+      <li>定義與圖例：Metz TO, et al. Introducing "identification probability" for automated and transferable assessment of metabolite identification confidence in metabolomics and related studies. Anal Chem 2025;97(1):1–11（線上 2024-12-19）. doi:10.1021/acs.analchem.4c04060。Figure 1 圖說：目標為 4-amino-2-methylenebutanoic acid，參考資料庫為 HMDB 中 22,007 種非脂質分子；① 分子式比對，② ±5 ppm 加 ±1% CCS，③ 再加 cosine ≥ 850 的 MS/MS 比對。內文 p.6 說明 9 個候選即 1／9（11%），7 個候選即 1／7（14%）。</li>
+      <li>為什麼提出：作者指出等級制度使用不一致且主觀，也不易自動化或跨平台比較（p.4–5）。</li>
+      <li>限制：小型資料庫會讓機率虛高（p.7）；資料庫應貼近研究的物種或樣品，並由實驗室管理版本、分享自建資料庫（p.8–9）。MS/MS 是單一維度中區辨力最強的（p.8）。</li>
+      <li>建議：作者建議先與 MSI 等級並行使用，而不是取代（p.8）。</li>
+      <li>授權：論文以 CC BY-NC-ND 4.0 發表，圖片可用於非商業教學並須註明出處，不得修改內容。</li>
+    </ul>
+  </aside>
+</section>
+
+</section>
+<!-- ##### 垂直組結束：第 6–7 頁 ##### -->
+
+<!-- ##### 垂直組：第 8–12 頁　MS/MS 光譜資料庫（↓ 往下翻） ##### -->
+<section>
+
+<!-- ========== 8. MS/MS 光譜資料庫：判讀原則 ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide mid principles" -->
+## MS/MS Spectral Databases
+
+| 可信度 | 定義 |
+|---|---|
+| **高** | 以已知化學標準品測量的實驗光譜為主，且有明確的品質控管、結構與儀器資訊 |
+| **中高** | 主要是實驗光譜，但來自多個實驗室或儀器平台，品質及註解完整度可能有差異 |
+| **中** | 仍以實驗光譜為主，但多數取自文獻或二手來源，儀器條件與品質資訊不完整，使用時須回查原始來源 |
+| **混合** | 同時收錄實驗、預測、衍生或計算傳播註解的光譜，必須依個別紀錄判定 |
+| **預測／輔助** | 以電腦預測的光譜或結構為主，適用於候選物篩選，不能直接視為實驗確認 |
+
+- 可信度是本課程的**定性分類**，不是官方正確率，也不等於 MSI 鑑定等級；只靠光譜庫比對最高為 Level 2，候選不唯一時屬 Schymanski Level 3
+- 整合型資料庫（GNPS2、MoNA、HMDB、MS-DIAL）大量互相轉載，**光譜數不能直接加總**
+- 光譜筆數 ≠ 化合物數；NIST26、mzCloud、MSnLib 的光譜包含 MS³ 以上
+- 數字查核日期：2026 年 10 月；各資料庫持續變動
+
+Note:
+可信度指光譜作為鑑定證據的可靠性，不是資料庫的知名度或更新頻率。即使是標準品參考光譜，達到 MSI Level 1 仍須在相同分析條件下與真實標準品比對至少兩項正交資訊（如 RT＋MS/MS）。
+
+「近一年更新」要分三種：A. 新增光譜（MassBank、NIST26、MoNA）；B. 發布新版或重新整合，未必新增光譜（MiMeDB 2.0）；C. 平台或索引同步（GNPS2）。
+
+原第 4 頁列的 TMIC 資料庫（DrugBank、T3DB、SMPDB、FooDB、Yeast／Bovine／E. coli Metabolome DB）是化合物知識庫，不在本次 MS/MS 光譜庫比較範圍。
+</textarea></section>
+
+<!-- ========== 9. MS/MS 光譜資料庫：核心實驗光譜庫 ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense dbtable" -->
+## MS/MS Spectral Databases
+
+### 核心實驗光譜庫
+
+| 資料庫 | 資料類型與特色 | 資料量 | 存取方式 | 可信度 |
+|---|---|---|---|---|
+| **NIST26** | NIST 專家審核的商業質譜庫，包含 EI 光譜、串聯質譜（最高到 MS⁴）及 GC 保留指數 | 串聯質譜 3,219,115 筆／化合物 68,635 種（包含 MS²–MS⁴）| 須購買商業授權，透過授權經銷商取得 | 高：實測光譜並經專家品質控管 |
+| **mzCloud** | HighChem 建立的高解析 MSⁿ 碎裂樹光譜庫；分為人工校對的 Reference 與自動處理的 Autoprocessed 兩部分 | 光譜 16,531,567 筆／化合物 32,330 種（2024 年統計，含 MSⁿ） | 可免費線上檢索（須登入）；條款禁止下載或複製資料 | 高（Reference 部分）；Autoprocessed 占多數，須留意 |
+| **MassBank** | 社群共建的開放實驗質譜庫，以標準品光譜為主；每筆紀錄附完整儀器條件，並逐筆標註授權 | 2025.05.1 版：光譜 119,845 筆／化合物 18,529 種（去重後）；網站目前收錄 139,006 筆紀錄（2026.03 版） | 免費查詢；可經 GitHub、Zenodo 下載，另有提供 REST API | 中高：實驗來源明確，品質依提交單位而異 |
+| **METLIN** | Scripps 以化學標準品自建的 MS/MS 庫；每個標準品都在正、負離子模式及 4 種碰撞能量下量測 | 已量測逾 960,000 種標準品；960K 版未公布光譜總數（2020 年時已超過 400 萬筆） | 須寄信向 Scripps 申請帳號；雲端版為付費訂閱，條款禁止大量下載 | 高：大規模標準品實測，量測條件標準化 |
+| **MSnLib** | IOCB Prague 以 Orbitrap ID-X 建立的多階碎裂（MS²–MSⁿ）標準品庫；以 flow injection 量測，沒有滯留時間資訊 | 論文統計（7 組化合物庫）：MSⁿ 逾 230 萬筆、MS² 357,065 筆／化合物 30,008 種 | 免費，CC BY 4.0；可經 Zenodo 下載，GNPS2、MoNA 亦有收錄 | 中高至高：標準品實測；pseudo-MS² 應另計 |
+
+
+Note:
+維運機構與近況：
+- MassBank：MassBank Consortium；MassBank-EU 由德國 UFZ 架設、IPB Halle 開發軟體，日本端由日本質譜學會負責。2025.10 版（2025-10-24）與 2026.03 版（2026-04-15，新增 4,566 筆，含 CyanoMetDB）。約 2 萬筆為 MS1 或 EI。
+- METLIN：Scripps Research（Siuzdak 實驗室）；雲端版 METLIN Gen2 由 Mass Consortium Corporation 提供訂閱。帳號須寄信至 masspec@scripps.edu 申請，是否仍有免費查詢方案無法確認。METLIN 960K 論文：Anal Chem 2026;98(17):12498–12507（線上 2026-04-21）；>96 萬的數字 2025-10 已出現，不能據此認定近一年新增光譜。
+- NIST26：NIST 質譜資料中心；2026 年春季發布，搭配 NIST MS Search 4.0；另有 527,993 筆 GC 保留指數。約一半串聯光譜的前驅離子為源內碎片。
+- MSnLib：捷克科學院 IOCB Prague（Pluskal 實驗室）；Nature Methods 2025。Zenodo 第 8 版（2026-07-01）光譜檔與 2025-08-28 版相同。
+- mzCloud：HighChem（斯洛伐克）；Thermo Compound Discoverer、Mass Frontier 可連線檢索。Reference 約 115 萬筆，多數光譜屬 Autoprocessed。
+
+資料來源：
+- MassBank：https://massbank.eu/MassBank/ ；https://doi.org/10.1093/nar/gkaf1193 ；https://github.com/MassBank/MassBank-data/releases
+- METLIN：https://metlin.scripps.edu/terms.html ；https://doi.org/10.1021/acs.analchem.5c08031 ；https://doi.org/10.1038/s41592-020-0942-5
+- NIST26：https://www.nist.gov/programs-projects/nist26-updates-nist-electron-ionization-and-tandem-mass-spectral-libraries ；https://chemdata.nist.gov/dokuwiki/doku.php?id=chemdata:msms
+- MSnLib：https://doi.org/10.1038/s41592-025-02813-0 ；https://doi.org/10.5281/zenodo.11163380
+- mzCloud：https://www.mzcloud.org/ ；https://www.mzcloud.org/Terms
+</textarea></section>
+
+<!-- ========== 10. MS/MS 光譜資料庫：整合型光譜平台 ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense dbtable" -->
+## MS/MS Spectral Databases
+
+### 整合型光譜平台
+
+| 資料庫 | 資料類型與特色 | 資料量 | 存取方式 | 可信度 |
+|---|---|---|---|---|
+| **HMDB** | 人體代謝物知識庫，不是單純的光譜庫；含實驗與預測的 MS/MS、GC-MS、NMR 光譜及臨床註解 | 實驗 LC-MS/MS 64,923 筆／4,064 種；預測 LC-MS/MS 1,787,163 筆／206,809 種（官方統計，2026-10） | 免費查詢與下載；CC BY-NC 4.0，商業使用須取得許可 | 混合：實驗譜較可靠，預測譜僅供輔助 |
+| **MiMeDB 2.0** | 人體微生物代謝物知識庫；整合 HMDB 光譜，並以 FraGNNet 為缺少實驗譜的化合物預測 MS/MS | 實驗 MS/MS 35,404 筆、預測 MS/MS 278,268 筆；收錄 29,295 種代謝物（NAR 2026 論文） | 免費查詢與下載；CC BY-NC 4.0 | 混合：須依實驗或預測來源區分 |
+| **GNPS2** | 社群共建的 MS/MS 知識庫；混合 Standard、Propagated、MassQL Derived、Multiplex Synthesis 四類光譜，其中 Standard 約占 31% | 光譜 2,700,980 筆／化合物 208,689 種（以 2D InChIKey 去重；2026-08-13） | 免費查詢；可下載 MGF、JSON 格式，並可直接用於 GNPS2 分子網路分析 | 混合：標準品光譜較可靠，傳播註解須審慎 |
+| **MoNA** | UC Davis Fiehn Lab 的整合型質譜庫；實驗光譜與大量預測光譜混合（其中 LipidBlast 預測譜約 183 萬筆） | 全部光譜 3,601,160 筆，其中 LC-MS/MS 1,317,267 筆（含預測譜）；化合物 892,269 種（2D InChIKey；2026-10-19） | 免費，CC BY 4.0；可整批下載 JSON、MSP、SDF，另有提供 REST API | 混合：須區分實驗與電腦預測光譜 |
+| **MS-DIAL 光譜套件** | Tsugawa 實驗室分發的 MSP 光譜套件；彙整標準品、生物樣本、EI 與 CCS 資料，另附 MassBank、GNPS 等來源的轉載檔 | 標準品套件：正離子 324,191 筆／16,232 種；負離子 44,669 筆／8,887 種（2024 版） | 免費，CC BY 4.0；可經 Zenodo 下載 MSP 檔，供 MS-DIAL 等軟體使用 | 混合：標準品套件較高，其他資料依來源而定 |
+
+Note:
+維運機構與近況：
+- GNPS2：UC Riverside Wang Bioinformatics Group（原始 GNPS 源自 UC San Diego）。四類光譜：Standard 835,300、MassQL Derived 782,126、Multiplex Synthesis 769,450、Propagated 314,104；匯入的外部庫（MassBank、MoNA、HMDB 等）合計約 28 萬筆。「匯入即 Standard」並非每個庫都成立。
+- MoNA：UC Davis Fiehn Lab（West Coast Metabolomics Center）。2026 年新增 Enveda-180（1,158,293 筆，2026-07-20）、MSnLib（87,948 筆）、BMDMS-NP（227,307 筆）。官方的實驗／預測分類數字彼此不一致，不宜引用拆分數。
+- HMDB：University of Alberta／TMIC（Wishart Lab）；仍為 5.0 版（NAR 2022），光譜下載檔最新日期 2023-07-01。官方統計（2026-10 確認）另有實驗 GC-MS 11,493 筆／3,000 種、預測 GC-MS 627,700 筆／74,944 種。MetaboAnalyst 匯入版為 64,711／1,786,690 筆。
+- MiMeDB：University of Alberta（Wishart Lab）；MiMeDB 2.0，NAR 2026;54(D1):D623–D634（2025-11-22 線上）。官網統計頁（2026-10 確認）仍列 371,071 筆 MS/MS、29,016 種代謝物，與論文不同步；下載頁已提供 2.0 版檔案。
+- MS-DIAL：Tsugawa 實驗室（現屬京都大學）；主套件 2024-08-08 版，2025-12-08 另新增 CleaD（EAD／CID）9,220 筆。
+
+資料來源：
+- GNPS2：https://library.gnps2.org/libraries ；https://gnps2.org/homepage
+- MoNA：https://massbank.us/spectra/statistics ；https://massbank.us/downloads
+- HMDB：https://hmdb.ca/statistics ；https://hmdb.ca/about ；https://doi.org/10.1093/nar/gkab1062
+- MiMeDB：https://mimedb.org/ ；https://doi.org/10.1093/nar/gkaf1272
+- MS-DIAL：https://systemsomicslab.github.io/compms/msdial/main.html ；https://zenodo.org/records/13261737
+</textarea></section>
+
+<!-- ========== 11. MS/MS 光譜資料庫：專門型與預測資源（1／2） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense dbtable" -->
+## MS/MS Spectral Databases
+
+### 專門型與預測資源（1／2）：脂質與電腦預測
+
+| 資料庫 | 資料類型與特色 | 資料量 | 存取方式 | 可信度 |
+|---|---|---|---|---|
+| **LIPID MAPS 標準品光譜庫** | 脂質標準品的實驗參考光譜，以氧化脂質為主；約六成來自三段四極等低解析儀器 | 概覽頁列 1,856 筆光譜；下載檔實含 1,991 筆、約 780 種結構（2026-10） | 免費，CC BY 4.0；可下載 JSON、MGF 格式 | 高：標準品實驗光譜 |
+| **LipidBlast** | 依脂質骨架、脂肪酸側鏈與加成離子，以規則式電腦預測的脂質 MS/MS 庫；現由 MS-DIAL 延續分發 | MS-DIAL v68：預測光譜 1,346,798 筆（正離子 554,041＋負離子 792,757） | 免費，CC BY 4.0；可經 Zenodo、MS-DIAL 取得 | 預測／輔助：可用於脂質類別註解，異構物區分有限 |
+| **CFM-ID 4.0** | 以機器學習＋碎裂規則預測 ESI-MS/MS，並附預測光譜庫供未知物比對與候選結構排序 | 光譜 9,011,384 筆（預測 8,866,848、實驗 144,536）；約 103 萬種化合物（跨來源可能重複） | 免費線上預測與搜尋；原始碼 LGPL-2.1，另有 Docker 版本 | 預測為主：結果宜以實驗光譜驗證 |
+| **MINEs** | 以酵素反應規則推演可能存在的代謝物，並附 CFM 預測 MS/MS 供候選結構比對 | 光譜 3,009,477 筆／化合物 537,799 種（MetaboAnalyst 匯入版，2023） | 非商業用途免費，商業用途須取得授權；另有提供 REST API | 預測／輔助：適合產生候選結構 |
+
+Note:
+維運機構與近況：
+- LIPID MAPS：LIPID MAPS Consortium；2026-01-06 公告新增固醇類 GC-MS、LC-MS 標準品光譜。概覽頁總數曾為 2,046（2025-06）、1,858（2025-12）、1,856（2026-10）。LMSD 另收錄 50,586 種脂質結構，與光譜數是不同指標。
+- LipidBlast：UC Davis Fiehn Lab 起源，MS-DIAL 團隊維護 fork；原始論文（Nat Methods 2013）為 212,516 筆。MS-DIAL v68 頁面標 2022-04-21，Zenodo 存檔 2024-04-10；MetaboAnalyst 匯入版 1,832,594 筆。
+- CFM-ID：University of Alberta（Wishart Lab）；CFM-ID 4.0（NAR 2022），統計頁 2026-10-20 暫時無法連線，數字取自 2026-01 存檔；化合物數含跨來源重複。
+- MINEs：Northwestern University（Tyo Lab）維運 MINE 2.0；1.0 版與 Argonne、UC Davis、University of Florida 合作。官網註明 MS/MS 搜尋仍在開發中；商用授權洽 Pathway Solutions Inc.
+
+資料來源：
+- LIPID MAPS：https://www.lipidmaps.org/databases/standardspectraDB/overview ；https://www.lipidmaps.org/updates/highlights
+- LipidBlast：https://doi.org/10.1038/nmeth.2551 ；https://zenodo.org/records/10953284
+- CFM-ID：https://cfmid.wishartlab.com/ ；https://doi.org/10.1093/nar/gkac383
+- MINEs：https://minedatabase.ci.northwestern.edu/ ；https://doi.org/10.1093/bioinformatics/btac331
+</textarea></section>
+
+<!-- ========== 12. MS/MS 光譜資料庫：專門型與預測資源（2／2） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense dbtable" -->
+## MS/MS Spectral Databases
+
+### 專門型與預測資源（2／2）：植物與天然物
+
+| 資料庫 | 資料類型與特色 | 資料量 | 存取方式 | 可信度 |
+|---|---|---|---|---|
+| **BMDMS-NP** | 韓國建立的植物天然物 ESI-MS/MS 標準品庫；以多種儀器、多個碰撞能量重複量測 | 原始 GitHub：光譜 288,939 筆／化合物 2,739 種；MS-DIAL、MoNA 轉載的正離子版為 227,307 筆 | 可經 GitHub 取得；MS-DIAL、MoNA、GNPS2 亦有轉載版 | 中高至高：天然物標準品實驗光譜 |
+| **VaniyaNP** | UC Davis Fiehn Lab 的天然物標準品 MS/MS 庫；含 Q-TOF、Orbitrap 與離子阱光譜 | MoNA 版光譜 44,936 筆；MS-DIAL 版 39,937 筆／2,681 種 | 可經 MoNA、MS-DIAL 免費下載 | 中高至高：天然物標準品實驗光譜 |
+| **RIKEN PlaSMA** | RIKEN 的植物特化代謝物 MS/MS 庫，含 ¹³C 標記資料；2024 年已併入 PlanMAXdb | 光譜 12,771 筆（標準品 8,655＋植物組織 4,116） | 可下載 MS-DIAL 提供的 MSP 檔（CC BY 4.0）；新資料見 PlanMAXdb | 混合：標準品較高，植物組織註解依證據而定 |
+| **ReSpect** | RIKEN 的植物代謝物 MS/MS 庫，約 76% 資料取自文獻；2024 年已封存 | 光譜 4,310 筆（MS-DIAL MSP 版）；原始論文收錄 3,595 種代謝物 | 可從 RIKEN PRIMe 下載存檔，MS-DIAL 亦提供 MSP 檔 | 中：多取自文獻，品質依原始來源而異 |
+
+Note:
+維運機構與近況：
+- BMDMS-NP：韓國延世大學與 Bioinformatics & Molecular Design Research Center（仁川），與 Korea Basic Science Institute 合作；Phytochemistry 2020。原始庫最後更新 2023-01；227,307 筆為 MS-DIAL、MoNA 轉載的正離子版。
+- RIKEN PlaSMA：日本 RIKEN／PRIMe；2018–2024 年運作，PlanMAXdb 自 2024-06-25 上線，目前 v1.0 含 434 個植物樣本、157 個物種、108 個屬、25 個目（官網，2026-10 確認）。化合物數 1,231 無法由原始來源核實。
+- ReSpect：日本 RIKEN／PRIMe；2010–2024 年運作後封存。Sawada 2012（Phytochemistry）：76% 資料取自 163 篇文獻，其餘為標準品實測，所以可信度列為「中」。
+- VaniyaNP：UC Davis Fiehn Lab（Arpana Vaniya）；Agilent 6530 Q-TOF 9,997 筆、Q Exactive HF 28,260 筆、LTQ 6,679 筆。MoNA 與 MS-DIAL 數字不同是分裝方式不同，不是新增資料。
+
+資料來源：
+- BMDMS-NP：https://github.com/chalbori/bmdms-np ；https://doi.org/10.1016/j.phytochem.2020.112427
+- PlaSMA／PlanMAXdb：http://planmaxdb.riken.jp/menta.cgi/planmax/index ；https://prime.psc.riken.jp/menta.cgi/prime/index ；https://doi.org/10.2183/pjab.101.030
+- ReSpect：https://prime.psc.riken.jp/menta.cgi/prime/legacy_index ；https://doi.org/10.1016/j.phytochem.2012.07.007
+- VaniyaNP：https://massbank.us/downloads ；https://systemsomicslab.github.io/compms/msdial/main.html
+</textarea></section>
+
+</section>
+<!-- ##### 垂直組結束：第 8–12 頁 ##### -->
+
+<!-- ##### 垂直組：第 13–15 頁　分析流程（↓ 往下翻） ##### -->
+<section>
+
+<!-- ========== 13. 分析流程：流程圖 ========== -->
+<section class="workflow">
+  <h2>Analysis Workflow</h2>
+
+  <div class="wf-row">
+    <div class="wf-phase">
+      <div class="wf-head">實驗設計與擷取</div>
+      <div class="wf-step"><b>① 研究設計與樣品前處理</b><span>隨機進樣順序、各批次平衡生物因子；事先規劃 pooled QC、空白樣本；內標越早加越好</span></div>
+      <div class="wf-step"><b>② LC-HRMS 擷取</b><span>Full scan／DDA／DIA</span></div>
+      <div class="wf-step"><b>③ 轉成開放格式</b><span>原廠檔 → mzML</span></div>
+    </div>
+    <div class="wf-arrow">➜</div>
+    <div class="wf-phase">
+      <div class="wf-head">資料前處理</div>
+      <div class="wf-step"><b>④ 特徵偵測 → 特徵表</b><span>MS1：峰偵測、對齊、補峰<br>MS2：DDA 直接比對；DIA 須先解卷積，再送往 ⑨</span></div>
+      <div class="wf-step"><b>⑤ 空白樣本與 QC 過濾</b><span>RSD、D-ratio、偵測率</span></div>
+      <div class="wf-step"><b>⑥ 標準化與批次校正</b><span>先評估批次效應；校正，或把批次當共變數</span></div>
+      <div class="wf-step"><b>⑦ 遺漏值處理</b><span>處理補峰後仍缺的數值；先判斷缺失原因</span></div>
+    </div>
+    <div class="wf-arrow">➜</div>
+    <div class="wf-phase">
+      <div class="wf-head">統計與註解</div>
+      <div class="wf-step"><b>⑧ 統計分析</b><span>單變量（FDR）、多變量（交叉驗證）、共變數調整</span></div>
+      <div class="wf-loop">⇅ 互相來回：顯著特徵 → 註解；需要時回儀器補收 MS/MS</div>
+      <div class="wf-step"><b>⑨ 註解與鑑定</b><span>m/z＋RT → MS/MS 光譜庫 → 電腦預測／分子網路；註明信心等級</span></div>
+    </div>
+    <div class="wf-arrow">➜</div>
+    <div class="wf-phase">
+      <div class="wf-head">解讀與分享</div>
+      <div class="wf-step"><b>⑩ 功能解讀</b><span>路徑／富集分析；mummichog 可直接用完整特徵表，不必先鑑定</span></div>
+      <div class="wf-step"><b>報告與資料存放</b><span>依 mQACC 回報 QA／QC；存放至 MetaboLights、Metabolomics Workbench</span></div>
+      <div class="wf-step wf-ext"><b>延伸</b><span>多體學整合、劑量反應、因果推論</span></div>
+    </div>
+  </div>
+
+  <div class="wf-qc"><b>QA／QC 貫穿全程</b>系統適用性測試 · 定期插入 pooled QC（文獻每 3–25 個樣本） · 空白樣本 · 內標 · 品質過濾 · 批次評估與校正 · 回報 QC 結果</div>
+  <div class="wf-targeted"><b>標靶分析分支</b>①–③ 共用 → MRM、同位素內標、校正曲線 → 輸出濃度（須有標準品；許多 MRM 面板只給相對強度）；兩者正逐漸融合</div>
+
+  <aside class="notes">
+    <p>重點：真實流程不是一條直線。QC 貫穿每個階段；MS1（定量）與 MS2（鑑定）是平行支線；統計與註解會互相來回；路徑分析不一定要先鑑定。前處理軟體與參數會大幅影響結果：同一批牛唾液加標資料（陰離子交換層析－HRMS），四套軟體各自最佳化後合併為 2,773 個特徵，四者共同偵測僅 220 個（7.9%，Aigensberger 2025；單一資料集，不宜外推）；同一批冠心病血清，兩套軟體富集出的疾病相關路徑完全不同（Liao 2023）。</p>
+    <p>流程圖依據：</p>
+    <ul>
+      <li>QC 貫穿全程、pooled QC 間隔：Broadhurst D, et al. Metabolomics 2018;14:72. doi:10.1007/s11306-018-1367-3；Kirwan JA, et al.（mQACC）Metabolomics 2022;18:70. doi:10.1007/s11306-022-01926-3</li>
+      <li>MS1／MS2 平行支線、參數最佳化：Pang Z, et al. MetaboAnalystR 4.0. Nat Commun 2024;15:3675. doi:10.1038/s41467-024-48009-6；Pang Z, et al. Nat Protoc 2022;17:1735–1761. doi:10.1038/s41596-022-00710-w</li>
+      <li>延伸到劑量反應與因果推論：Pang Z, et al. Nat Protoc 2026（線上 2026-08-17）. doi:10.1038/s41596-026-01415-0</li>
+      <li>前處理軟體比較：Aigensberger M, et al. Anal Chim Acta 2025;1336:343491. doi:10.1016/j.aca.2024.343491</li>
+      <li>QC 回饋迴路、批次當共變數：Liang Y-J, et al. SMART 2.0. Anal Chem 2025;97(46):25453–25468. doi:10.1021/acs.analchem.5c03225</li>
+      <li>最佳實務與鑑定命名：Alseekh S, et al. Nat Methods 2021;18:747–756. doi:10.1038/s41592-021-01197-1</li>
+      <li>mummichog：Li S, et al. PLoS Comput Biol 2013;9:e1003123. doi:10.1371/journal.pcbi.1003123</li>
+      <li>標靶與非標靶分工、pooled QC 間隔（每 3–25 個樣本）、MRM 面板多只給相對強度：Čajka T, Fiehn O. Anal Chem 2016;88(1):524–545. doi:10.1021/acs.analchem.5b04491</li>
+      <li>軟體改變生物結論：Liao J, et al. J Chromatogr A 2023;1687:463700. doi:10.1016/j.chroma.2022.463700</li>
+      <li>內標越早加越好、批次間平衡、先評估再校正：Han W, Li L. Mass Spectrom Rev 2022;41(3):421–442. doi:10.1002/mas.21672</li>
+      <li>mummichog 須上傳完整特徵表：Pang Z, et al. Nat Protoc 2022;17:1735–1761（步驟 20）</li>
+    </ul>
+  </aside>
+</section>
+
+<!-- ========== 14. 分析流程：階段說明（1／2） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide mid stages" -->
+## Analysis Workflow
+
+### 各階段重點（1／2）
+
+| 階段 | 目的 | 關鍵決策與常見陷阱 | 代表工具 |
+|---|---|---|---|
+| **① 研究設計與樣品前處理** | 確保設計能回答研究問題，避免干擾因子 | 隨機化進樣順序；pooled QC、空白樣本、內標要在萃取前就規劃好 | MetaboAnalyst（檢定力分析） |
+| **② LC-HRMS 擷取** | 取得 MS1 定量資料與 MS2 鑑定資料 | 先做系統適用性測試，定期插入 pooled QC；full scan 特徵最多，DDA 的 MS2 品質最好但僅約 43% 特徵有 MS2，DIA 涵蓋最廣但須解卷積；MS2 常只在 pooled QC 收集 | 原廠擷取軟體；MS-DIAL（DIA） |
+| **③ 轉成開放格式** | 原廠檔轉成 mzML，供開源工具讀取 | 中心化與轉檔工具會影響峰偵測；原始檔要保留以供存放 | ProteoWizard msConvert |
+| **④ 特徵偵測 → 特徵表** | 峰偵測、對齊、補峰（gap filling），歸併同位素與加成離子 | 參數須依資料集調整；一個代謝物會產生多個特徵；不同軟體結果差異大 | XCMS、MZmine、MS-DIAL、OpenMS、Compound Discoverer |
+| **⑤ 空白樣本與 QC 過濾** | 去除污染物與量測不穩定的特徵 | 常見門檻：QC RSD < 20%（非標靶探索常放寬至 30%）、QC 偵測率 > 70%、D-ratio ≤ 50%；有批次效應時先過濾可能誤刪真訊號。MetaboAnalyst 6.0 預設：缺值 > 50%、QC RSD > 20% 排除 | MetaboAnalyst、W4M、MS-DIAL |
+
+Note:
+資料來源：
+- ① ② ⑤：Broadhurst D, et al. Metabolomics 2018;14:72. doi:10.1007/s11306-018-1367-3；Alseekh S, et al. Nat Methods 2021;18:747–756. doi:10.1038/s41592-021-01197-1
+- ② 擷取模式比較（DIA 部分為 AIF）：Guo J, Huan T. Anal Chem 2020;92(12):8072–8080. doi:10.1021/acs.analchem.9b05135
+- ② ⑤ pooled QC 間隔與 RSD 門檻：Čajka T, Fiehn O. Anal Chem 2016;88(1):524–545. doi:10.1021/acs.analchem.5b04491
+- ② ⑤ MetaboAnalyst 6.0 的 MS2 收集方式與過濾預設值：Pang Z, et al. Nat Protoc 2026. doi:10.1038/s41596-026-01415-0（Box 1、步驟 37–38）
+- ① ⑤ 內標加入時機、有批次效應時 RSD 過濾的風險：Han W, Li L. Mass Spectrom Rev 2022;41(3):421–442. doi:10.1002/mas.21672
+- ③ mzML 與轉檔：Martens L, et al. Mol Cell Proteomics 2011. doi:10.1074/mcp.R110.000133；Chambers MC, et al. Nat Biotechnol 2012. doi:10.1038/nbt.2377
+- ④ 一個代謝物多個特徵：Mahieu NG, Patti GJ. Anal Chem 2017. doi:10.1021/acs.analchem.7b02380；MZmine 3：Heuckeroth S, et al. Nat Protoc 2024. doi:10.1038/s41596-024-00996-y
+- ④ 軟體比較（單一加標資料集，四套軟體共同特徵 7.9%；MS-DIAL 最接近人工積分）：Aigensberger M, et al. Anal Chim Acta 2025;1336:343491. doi:10.1016/j.aca.2024.343491
+- ④ 參數自動最佳化：Pang Z, et al. MetaboAnalystR 4.0. Nat Commun 2024;15:3675. doi:10.1038/s41467-024-48009-6
+- ⑤ 過濾門檻與影響：Schiffman C, et al. BMC Bioinformatics 2019. doi:10.1186/s12859-019-2871-9
+</textarea></section>
+
+<!-- ========== 15. 分析流程：階段說明（2／2） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide mid stages" -->
+## Analysis Workflow
+
+### 各階段重點（2／2）
+
+| 階段 | 目的 | 關鍵決策與常見陷阱 | 代表工具 |
+|---|---|---|---|
+| **⑥ 標準化與批次校正** | 去除進樣順序漂移、批次效應與樣本量差異 | 先以 PCA、分批 QC RSD 評估，影響小就不校正；QC 迴歸校正須交叉驗證以免過度擬合；ComBat 要求批次與組別平衡，也可把批次放進模型當共變數 | MetaboAnalyst、W4M、SMART |
+| **⑦ 遺漏值處理** | 處理補峰後仍缺的數值 | 先判斷是低於偵測極限還是隨機缺失：前者用小數值加變異（如 10% 最小值）或 QRILC，後者才適合 KNN、RF；刪除含缺值特徵效果最差。MetaboAnalyst 順序為過濾 → 補值 → 標準化 | MetaboAnalyst、W4M |
+| **⑧ 統計分析** | 找出組間差異或與結果相關的特徵 | 單變量檢定須控制 FDR；PLS-DA 須交叉驗證與置換檢定；調整共變數 | MetaboAnalyst、SMART、W4M |
+| **⑨ 註解與鑑定** | 賦予化合物身分並註明信心等級 | Level 1 須與標準品在相同條件下比對至少兩項正交資訊（如 RT＋MS/MS）；只靠光譜庫比對最高為 Level 2 | MS-DIAL、MZmine、GNPS2、SIRIUS |
+| **⑩ 功能解讀與資料存放** | 轉成生物意義，並讓資料可重複使用 | 富集分析須用與檢測相符的背景集，少量誤鑑定就可能改變結果；metadata 要從採樣時記錄 | MetaboAnalyst（mummichog）、MetaboLights、Metabolomics Workbench |
+
+<p class="small">鑑定信心等級：MSI（Sumner 2007）分 4 級，Schymanski 2014 分 5 級（含 2a／2b），Level 3 起定義不同，報告時須註明採用哪一套。Metz 等（2025）另提出「鑑定機率」＝1／N（N 為符合條件的資料庫候選數），建議與等級並列回報。</p>
+
+Note:
+資料來源：
+- ⑥ QC-RSC 與交叉驗證：Broadhurst D, et al. Metabolomics 2018;14:72. doi:10.1007/s11306-018-1367-3；SERRF：Fan S, et al. Anal Chem 2019. doi:10.1021/acs.analchem.8b05592；綜述：Han W, Li L. Mass Spectrom Rev 2022. doi:10.1002/mas.21672
+- ⑥ ⑧ 批次當共變數、ANCOVA 與 PLS-DA：Liang Y-J, et al. SMART 2.0. Anal Chem 2025;97(46):25453–25468. doi:10.1021/acs.analchem.5c03225
+- ⑥ ⑧ 共變數調整：Pang Z, et al. Nat Protoc 2022;17:1735–1761. doi:10.1038/s41596-022-00710-w
+- ⑥ 先評估再決定是否校正、ComBat 的限制：Han W, Li L. Mass Spectrom Rev 2022;41(3):421–442. doi:10.1002/mas.21672
+- ⑦ LoD（最小正值的 1/5，會壓縮分布）與 QRILC、過濾 → 補值 → 標準化的順序：Pang Z, et al. Nat Protoc 2026. doi:10.1038/s41596-026-01415-0（Box 2、步驟 37–48）
+- ⑨ 鑑定機率：Metz TO, et al. Anal Chem 2025;97(1):1–11. doi:10.1021/acs.analchem.4c04060
+- ⑨ 課堂例子：MetaboAnalyst 6.0 Protocol 的 Box 1 稱光譜庫比對為 level 2（MSI），Extended Data 又寫 level 2a（Schymanski），兩套等級混用
+- ⑦ 遺漏值機制與方法：Wei R, et al. Sci Rep 2018. doi:10.1038/s41598-017-19120-0；以 10% 最小值加變異補值最佳、刪除含缺值特徵最差：Aigensberger M, et al. Anal Chim Acta 2025;1336:343491. doi:10.1016/j.aca.2024.343491
+- ⑧ 多變量模型驗證：Broadhurst DI, Kell DB. Metabolomics 2006. doi:10.1007/s11306-006-0037-z
+- ⑨ 鑑定等級：Sumner LW, et al. Metabolomics 2007;3:211–221. doi:10.1007/s11306-007-0082-2；Schymanski EL, et al. Environ Sci Technol 2014;48:2097–2098. doi:10.1021/es5002105；分子網路：Nothias LF, et al. Nat Methods 2020. doi:10.1038/s41592-020-0933-6
+- ⑩ 富集分析建議：Wieder C, et al. PLoS Comput Biol 2021;17:e1009105. doi:10.1371/journal.pcbi.1009105；mummichog：Li S, et al. PLoS Comput Biol 2013;9:e1003123. doi:10.1371/journal.pcbi.1003123
+- ⑩ QC 回報與資料存放：Kirwan JA, et al. Metabolomics 2022;18:70. doi:10.1007/s11306-022-01926-3；Yurekten O, et al. Nucleic Acids Res 2024. doi:10.1093/nar/gkad1045；Sud M, et al. Nucleic Acids Res 2016. doi:10.1093/nar/gkv1042
+</textarea></section>
+
+</section>
+<!-- ##### 垂直組結束：第 13–15 頁 ##### -->
+
+<!-- ##### 垂直組：第 16–22 頁　分析軟體：開源、商用與選擇（↓ 往下翻） ##### -->
+<section>
+
+<!-- ========== 16. 開源軟體：主要工具功能比較（1／2） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense features" -->
+## Open-source / Freeware
+
+### 主要工具功能比較（1／2）
+
+| 軟體／平台 | 操作方式 | 支援資料 | 核心功能 | 優勢與限制 |
+|---|---|---|---|---|
+| **MS-DIAL 5** | Windows GUI、跨平台 CLI | LC-MS、GC-MS、DI／FIA-MS、IMS-MS、MSI；MS/MS：DDA、DIA | peak picking、spectral deconvolution（GC-EI、DIA）、alignment、metabolite／lipid annotation | **適合非標靶代謝體與脂質體分析**，整合多種資料庫；但仍須檢查註解品質。 |
+| **MZmine 4** | 跨平台 GUI（macOS 限學術版）、CLI（批次） | LC-MS、GC-MS、IMS-MS、MSI；MS/MS：DDA、DIA（實驗性） | feature detection、alignment、gap filling、MS/MS processing | **圖形化操作與原始訊號檢視功能完整**，可匯出 GNPS2 FBMN、IIMN 所需檔案；但官方版須登入帳號。 |
+| **GNPS2** | Web GUI | GC-MS；MS/MS：DDA（DIA 須先解卷積）；表格：feature table＋MGF（FBMN） | spectral library matching、molecular networking、FBMN | **適合探索未知代謝物和分子家族**；但 FBMN 須先用其他軟體產生 feature table。 |
+| **XCMS** | R 套件（Bioconductor） | LC-MS、GC-MS、DI／FIA-MS；MS/MS：DDA、DIA（SWATH） | peak detection、RT correction、alignment、gap filling | **適合建立可重現的自動化分析流程**，參數調整彈性高；但需具備 R 程式能力。 |
+| **OpenMS** | CLI（TOPP）、Python API（pyOpenMS）、GUI（TOPPView）；可接入 Galaxy、Nextflow | LC-MS、IMS-MS（FAIMS、PASEF）；MS/MS：DDA、DIA（僅標靶式 OpenSWATH） | feature detection、alignment／feature linking、adduct grouping、accurate mass search | **適合建構模組化、可重現的大規模質譜流程**，提供約 150 個工具；但需自行串接與調參，入門門檻高。 |
+</textarea></section>
+
+<!-- ========== 17. 開源軟體：主要工具功能比較（2／2） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense features" -->
+## Open-source / Freeware
+
+### 主要工具功能比較（2／2）
+
+| 軟體／平台 | 操作方式 | 支援資料 | 核心功能 | 優勢與限制 |
+|---|---|---|---|---|
+| **MetaboAnalyst 6.0** | Web GUI | LC-MS；MS/MS：DDA、DIA（SWATH）；表格：峰強度、濃度、peak list、spectral bins | normalization、statistics（PCA、PLS-DA）、MS/MS annotation、pathway analysis | **適合統計分析和生物學詮釋**，也能處理 LC-MS 原始光譜；但原始光譜處理只限 LC-MS，GC-MS、NMR 須先轉成表格。 |
+| **SIRIUS 6** | 跨平台 GUI、CLI、REST API（Python client） | LC-MS（僅含 MS/MS 的特徵）；MS/MS：DDA（DIA 須先解卷積） | molecular formula（SIRIUS、ZODIAC）、structure annotation（CSI:FingerID）、compound class（CANOPUS）、de novo structure（MSNovelist） | **不必依賴光譜庫，就能預測分子式、結構與化合物類別**；但雲端服務需帳號與授權（非營利學術免費）。 |
+| **Workflow4<wbr>Metabolomics** | Web GUI（Galaxy） | LC-MS、GC-MS、DI／FIA-MS、NMR；MS/MS：DDA；表格：峰強度 | preprocessing（XCMS、CAMERA）、normalization／QC、statistics（PLS／OPLS）、annotation | **以 Galaxy 串接完整流程，結果可分享、可重現**，工具也能安裝到其他 Galaxy 伺服器；但未註冊使用有額度限制。 |
+</textarea></section>
+
+<!-- ========== 18. 開源軟體：授權與使用條件 ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide mid" -->
+## Open-source / Freeware
+
+### 授權與使用條件
+
+| 軟體／平台 | 是否開源 | 學術研究使用 | 商業使用 | 主要授權方式 |
+|---|---|---|---|---|
+| **1. MS-DIAL 5** | ✅ 是 | 免費 | 免費* | 原始碼：LGPL v3；執行檔與資料庫：CC BY 4.0（廠商讀檔元件另有授權） |
+| **2. MZmine 4** | ✅ 是（官方版須登入） | 免費（限授予學位機構的非商業研究，須註冊） | 需購買付費方案 | 原始碼：MIT；官方版：mzio 方案授權 |
+| **3. GNPS2** | ◐ 程式碼公開，非開源授權 | 免費（限學術／非營利） | 需另取得商業授權 | 核心流程：UCR 學術授權；網站：服務條款 |
+| **4. XCMS** | ✅ 是 | 免費 | 免費* | GPL v2 以上 |
+| **5. OpenMS** | ✅ 是 | 免費 | 免費 | BSD 3-Clause |
+| **6. MetaboAnalyst 6.0** | ◐ 僅 R 套件開源 | 免費 | 免費 | R 套件（MetaboAnalystR、OptiLCMS）：MIT；網站：未公開原始碼 |
+| **7. SIRIUS 6** | ◐ 本機軟體開源，雲端服務不開源 | 免費（雲端服務限非營利學術） | 雲端服務需商業授權 | 本機軟體：AGPL v3；雲端服務：學術授權（FSU Jena）／商業授權（Bright Giant） |
+| **8. Workflow4Metabolomics** | ✅ 是 | 免費 | 免費*（含託管服務） | GPL v3（主要工具庫） |
+
+<p class="small">* 可免費商用；再散布（含修改後）時須遵守原授權：GPL／LGPL 須向取得者提供原始碼，CC BY 須標示出處。授權資訊查核日期：2026 年 10 月。</p>
+</textarea></section>
+
+<!-- ========== 19. 商用軟體比較（1／3） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense commercial" -->
+## Commercial / Licensed
+
+### 商用軟體比較（1／3）
+
+| 公司 | 軟體／維護狀態 | 核心功能 | 主要優勢 | 主要限制與缺點 |
+|---|---|---|---|---|
+| **Thermo Fisher Scientific** | **Compound Discoverer 3.5 SP1**（2026/5；持續更新） | LC-HRMS 非標靶 feature detection、alignment、MS1 相對定量、MS/MS 結構註解、統計分析與 pathway mapping（Metabolika、BioCyc）。 | Node-based workflow 高度可客製化；整合 mzCloud、mzVault、ChemSpider 等資料庫；支援複雜的小分子研究。 | 功能較多，工作流程設定需要經驗；僅能讀取 Thermo HRAM 儀器的 .raw 資料，無法匯入他廠或 mzML 資料；需商業授權。 |
+| **Waters** | **Progenesis QI 3.1**（2025/5；持續維護） | 非標靶 LC-MS peak detection、alignment、normalization、相對定量、adduct deconvolution、MS/MS 註解及統計分析。 | **跨廠牌相容性佳**，支援 mzML／mzXML，他廠原始檔僅有限外掛支援；自動 alignment 與互動式峰形檢查；易於匯出分析結果。 | 商業授權；進階多變量統計（EZinfo）及 pathway analysis 需外部工具；最佳化與人工檢查仍不可省略。 |
+| **Waters** | **waters_connect 4.5.0**（2026/7；持續更新） | Waters 儀器控制、定量、UNIFI 資料分析、小分子篩選、資料管理，以及代謝體學資料匯出。 | 整合儀器、資料、方法、權限與 audit trail；Data Readiness 方案以 Data Convert 即時轉 mzML 或 API 銜接第三方工具。 | **是整合平台，不是單一非標靶分析演算法**；功能取決於啟用的應用程式與授權，不能直接取代 Progenesis QI。 |
+| **Bruker** | **MetaboScape 2026b**（持續更新） | 非標靶 LC-MS、LC-IMS-MS、脂質體學；feature extraction、alignment、MS/MS 註解、CCS 分析及統計。 | 整合 TIMS／CCS 資訊；適合複雜樣本與脂質異構物研究；2026b 的 neXus 可累積跨研究的註解資料。 | 對 Bruker timsTOF／ion mobility 生態系的價值最高；其他儀器資料的相容性及授權需個別確認。 |
+
+Note:
+資料來源：
+- Compound Discoverer 3.5（產品型錄頁）：https://www.thermofisher.com/order/catalog/product/COMPOUNDDISC3
+- Compound Discoverer 3.5 SP1（發行說明，2026/5）：https://docs.thermofisher.com/v/u/Compound-Discoverer-3.5-SP1-Release-Notes
+- Compound Discoverer 3.5（使用手冊，支援檔案格式與 pathway 節點）：https://docs.thermofisher.com/r/Compound-Discoverer-3.5-User-Guide
+- Progenesis QI（官方產品頁）：https://www.waters.com/nextgen/en/products/informatics-and-software/mass-spectrometry-software/progenesis-qi-software/progenesis-qi.html
+- Progenesis QI 3.1（版本說明）：https://www.nonlinear.com/progenesis/qi/v3.1/whats-new/
+- Progenesis QI 3.1（檔案格式支援）：https://www.nonlinear.com/progenesis/qi/v3.1/faq/file-formats-and-instruments-support.aspx
+- waters_connect 4.5.0（更新說明）：https://help.waters.com/content/help/en/product-support/waters-connect-software-solutions-support/waters-connect-4-5-0-release-overview.html
+- waters_connect（LTS／STS 版本總覽，含 4.5.0 發行日期）：https://help.waters.com/help/en/product-support/waters-connect-software-solutions-support/waters-connect-lts-sts-release-overview.html
+- waters_connect for Data Readiness：https://www.waters.com/nextgen/us/en/products/informatics-and-software/waters_connect/waters-connect-for-data-readiness.html
+- MetaboScape 2026b（官方產品頁）：https://www.bruker.com/en/products-and-solutions/mass-spectrometry/ms-software/metaboscape.html
+</textarea></section>
+
+<!-- ========== 20. 商用軟體比較（2／3） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense commercial" -->
+## Commercial / Licensed
+
+### 商用軟體比較（2／3）
+
+| 公司 | 軟體／維護狀態 | 核心功能 | 主要優勢 | 主要限制與缺點 |
+|---|---|---|---|---|
+| **SCIEX** | **SCIEX OS 5.0**（2026/6 發表、7 月釋出；持續更新） | 質譜資料擷取、MRM 定量、peak integration、calibration、定性分析、targeted／suspect screening，以及部分 non-targeted 工作流程。 | SCIEX 儀器控制與分析整合；適合高通量定量；具批次審查、稽核與資料完整性功能。 | 主要為 SCIEX 儀器平台；不同授權功能有差異；若需完整非標靶 feature table 與深度代謝體學分析，應確認適用模組或搭配其他軟體；可用 MS Data Converter 轉為 mzML，供第三方軟體分析。 |
+| **Agilent Technologies** | **MassHunter**（Qualitative Analysis 14.0、Quantitative Analysis 13.0；持續更新） | LC-MS、GC-MS 定性與定量；EIC peak integration、校正曲線、MS/MS library search。Profinder（VistaFlux 套件中的獨立程式）可批次 feature extraction、alignment。 | Agilent 儀器原生整合度高；支援標靶定量及非標靶特徵擷取；可整合自建光譜庫。 | MassHunter 是軟體家族，完整代謝體學流程可能需要多個模組；偏重 Agilent 生態系。 |
+| **Agilent Technologies** | **MassHunter Explorer**（2.0 以後，產品頁已有新版；持續更新） | 非標靶 LC-QTOF feature extraction、統計分析、MS/MS 鑑定；可將化合物送至 NIST MS Search、SIRIUS 鑑定，並以 PCDL 資料庫比對。 | 將特徵擷取、統計及未知物註解整合於同一介面；支援 PCA、ANOVA、volcano plot。 | 官方支援儀器以 Agilent LC/TOF、LC/Q-TOF 為主；跨廠牌通用性較低，進階資料庫與附加模組需確認授權。 |
+
+Note:
+資料來源：
+- SCIEX OS 5.0（官方產品頁）：https://sciex.com/products/software/sciex-os-software
+- SCIEX OS 5.0（新聞稿，2026/6/1）：https://sciex.com/about-us/press-releases/2026/sciex-launches-its-5th-generation-of-nominal-mass-novus-v55-system-with-sciexos-5-0-software
+- SCIEX OS 5.0（發行說明，2026/7）：https://download.sciex.com/SCIEXOS-5.0-release-notes.pdf
+- MassHunter（安裝指南 D0130987，已確認適用 Qual 14.0／Quant 13.0）：https://www.agilent.com/cs/library/usermanuals/public/D0130987%20MassHunter%20Qualitative%20and%20Quantitative%20Analysis%20Installation%20Guide.pdf
+- MassHunter Qualitative Analysis（發行說明 D0131336，文件日期 2026 年 5 月）：https://www.agilent.com/cs/library/usermanuals/public/D0131336%20MassHunter%20Qualitative%20Analysis%20Release%20Notes.pdf
+- Profinder（Quick Start G3835-90034，適用 B.08.00 SP2 以後版本，屬 VistaFlux 套件；最新版本號未確認）：https://www.agilent.com/cs/library/usermanuals/public/G3835-90034_Profinder_QuickStart.pdf
+- MassHunter Explorer（官方產品頁，已有 2.0 之後的新版，版本號待補）：https://www.agilent.com/en/product/software-informatics/mass-spectrometry-software/data-analysis/masshunter-explorer
+- MassHunter Explorer 2.0（說明手冊 D0039646，2025/9）：https://www.agilent.com/cs/library/usermanuals/public/D0039646%20MassHunter%20Explorer%20Introduction%20Workbook.pdf
+</textarea></section>
+
+<!-- ========== 21. 商用軟體比較（3／3） ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide dense commercial" -->
+## Commercial / Licensed
+
+### 商用軟體比較（3／3）
+
+| 公司 | 軟體／維護狀態 | 核心功能 | 主要優勢 | 主要限制與缺點 |
+|---|---|---|---|---|
+| **Shimadzu** | **LabSolutions Insight**（持續銷售／維護） | 多分析物定量、peak integration、QA/QC flagging、數據審查及報告。 | 高通量定量與資料檢查效率高；可搭配 LabSolutions DB 管理數據及 audit trail。 | 主要偏向既定分析物的定量與審查，並非完整的非標靶 discovery 平台。 |
+| **Shimadzu** | **LabSolutions Insight Explore**（LabSolutions Insight 選購模組；持續銷售） | 高解析化合物偵測、分子式預測、MS/MS 資料庫搜尋、PubChem／ChemSpider 結構檢索、MS/MS 碎片指派、批次定性及定量。 | 適合 LC-QTOF 未知物篩選、化學結構推測與 MS/MS 解讀；具可視化分析介面。 | 較偏向化合物鑑定與篩選，不能直接等同於大型非標靶研究所需的完整 feature alignment 與統計平台。 |
+| **Shimadzu** | **LabSolutions Insight Profiler**（**2026 年新推出**） | 非標靶 LC-QTOF feature detection、alignment、MS/MS library searching、t-test、fold change、PCA、volcano plot、box plot。 | 直接整合非標靶代謝體學工作流程；可從原始質譜資料進行特徵擷取及統計分析。 | 新推出產品，獨立跨軟體基準測試仍較少；需 LabSolutions LCMS 5.135 SP1 以上，僅處理島津 LC/QTOF 資料。 |
+| **biocrates** | **WebIDQ**（雲端版自動更新；持續維護） | 搭配 biocrates 代謝體學試劑套組，提供標準化定量、QC、normalization、結果管理與資料分析。 | 商業化標準流程完整；適合大批次標靶代謝體學；試劑套組已在多家廠牌三段四極（Agilent、SCIEX、Waters 等）驗證。 | 為 biocrates 試劑套組必備軟體，**不適合一般非標靶 feature discovery**；軟體另採訂閱授權。 |
+
+Note:
+資料來源：
+- LabSolutions Insight（官方產品頁）：https://www.shimadzu.com/an/products/liquid-chromatograph-mass-spectrometry/lc-ms-software/labsolutions-insight/index.html
+- LabSolutions Insight／Explore（型錄 C146-E346F）：https://www.shimadzu.com/an/sites/shimadzu.com.an/files/pim/pim_document_file/brochures/11393/c146-e346.pdf
+- LabSolutions Insight Explore（官方產品頁）：https://www.shimadzu.com/an/products/software-informatics/software-option/labsolutions-insight-explore/index.html
+- LabSolutions Insight Profiler（官方產品頁）：https://www.shimadzu.com/an/products/software-informatics/labsolutions-series/labsolutions-insight-profiler/index.html
+- LabSolutions Insight Profiler（型錄 C146-E513，2026/4）：https://www.shimadzu.com/an/sites/shimadzu.com.an/files/pim/pim_document_file/brochures/26422/c146-e513.pdf
+- WebIDQ（官方產品頁）：https://biocrates.com/webidq/
+- WebIDQ（官方 FAQ）：https://shop.biocrates.com/Service/FAQ/
+- biocrates 試劑套組儀器相容性（MxP Quant 500 XL）：https://biocrates.com/mxp-quant-500-xl/
+</textarea></section>
+
+<!-- ========== 22. 如何選擇軟體：商用 vs 開源 ========== -->
+<section data-markdown><textarea data-template>
+<!-- .slide: class="table-slide choose" -->
+## Commercial vs Open-source / Freeware
+
+### 如何選擇：先看需求，再看價格
+
+| 考量 | 較適合商用軟體 | 較適合開源／免費軟體 |
+|---|---|---|
+| **儀器與檔案格式** | 只用單一廠牌儀器，想直接讀原廠原始檔（如 Compound Discoverer 僅讀 Thermo .raw） | 多廠牌資料，或需處理 mzML 等開放格式 |
+| **分析類型** | 標靶定量、高通量、需 audit trail 的法規環境（如 SCIEX OS、LabSolutions Insight、WebIDQ） | 非標靶探索、分子網路、未知物結構預測（如 MS-DIAL、MZmine、GNPS2、SIRIUS） |
+| **可重現性與客製化** | 以 GUI 固定流程為主，有原廠技術支援 | 參數與程式碼可公開分享，便於批次或腳本化（如 XCMS、OpenMS、W4M） |
+| **學習門檻** | 有原廠訓練；進階流程設定仍需經驗 | 依靠社群文件與論壇；部分工具需 R、Python 或 CLI 能力 |
+| **授權與成本** | 需購買授權，模組與資料庫可能另計 | 學術多為免費；商業使用、雲端服務或官方版可能需授權（見授權與使用條件頁） |
+
+<p class="small">鑑定信心等級（Metabolomics Standards Initiative）取決於證據，而非軟體：MSI Level 1 須與標準品在相同條件下比對至少兩項正交資訊（如 RT＋MS/MS）；只靠光譜庫比對為 Level 2（putatively annotated）。兩類軟體的結果都需人工檢查。</p>
+
+Note:
+重點：目前沒有證據顯示商用軟體的鑑定準確度整體高於開源工具；結果受資料庫、擷取模式（DDA／DIA）與參數影響更大。原始檔是否綁定廠牌，才是兩類軟體最大的實際差異。
+
+參考文獻：
+- Sumner LW, et al. Proposed minimum reporting standards for chemical analysis. Metabolomics. 2007;3:211–221. doi:10.1007/s11306-007-0082-2（MSI 鑑定等級；Level 1 需標準品）
+- Schymanski EL, et al. Identifying small molecules via high resolution mass spectrometry: communicating confidence. Environ Sci Technol. 2014;48:2097–2098. doi:10.1021/es5002105（Level 1–5 信心等級）
+- Li Z, et al. Comprehensive evaluation of untargeted metabolomics data processing software in feature detection, quantification and discriminating marker selection. Anal Chim Acta. 2018;1029:50–57. doi:10.1016/j.aca.2018.05.001（比較 MS-DIAL、MZmine 2、XCMS、MarkerView、Compound Discoverer；MZmine 2 在定量與差異標記挑選表現最佳）
+- Hohrenk LL, et al. Comparison of software tools for liquid chromatography–high-resolution mass spectrometry data processing in nontarget screening of environmental samples. Anal Chem. 2020;92:1898–1907. doi:10.1021/acs.analchem.9b04095（四套軟體處理同一批資料，共同特徵僅約 10%）
+- Alseekh S, et al. Mass spectrometry-based metabolomics: a guide for annotation, quantification and best reporting practices. Nat Methods. 2021;18:747–756. doi:10.1038/s41592-021-01197-1（註解與報告的最佳實務）
+
+用語說明：
+
+1. 「需 audit trail 的法規環境」
+   - audit trail（稽核軌跡）：軟體自動記錄誰、在何時、對資料做了什麼、為什麼，使用者不能關閉或刪除。例如定量時手動重新積分一個峰，修改前後的數值、操作者與理由都會保存。
+   - 法規環境：必須證明資料可信、受主管機關規範的實驗室，例如藥廠品管與 GLP／GMP 實驗室、臨床檢驗室（ISO 15189、CLIA）、送審 FDA 的資料（電子紀錄與電子簽章須符合 21 CFR Part 11，歐盟為 Annex 11）。
+   - 這些單位還需要權限管理、電子簽章與經驗證的軟體。SCIEX OS、LabSolutions（搭配資料庫版）、waters_connect 等商用軟體內建這些功能，廠商也協助驗證；開源工具通常沒有，也沒有廠商出具驗證文件。一般學術研究不需要。
+
+2. 為什麼非標靶探索「較適合開源」
+   - 這是簡化的說法，商用也有很好的非標靶工具（Compound Discoverer、MetaboScape、Progenesis QI、MassHunter Explorer）。開源在非標靶常見的原因：
+   - 新方法多先以開源釋出：分子網路（GNPS）、不靠光譜庫的結構預測（SIRIUS／CSI:FingerID、CANOPUS）、離子網路（IIMN）、DIA 解卷積多來自學術團隊，商用軟體較晚整合或不整合。
+   - 不綁定廠牌：開源工具讀 mzML 等開放格式，方便合併多實驗室、多儀器資料；商用多半只讀自家原始檔（如 Compound Discoverer 僅讀 Thermo .raw）。
+   - 透明、可重現：非標靶結果對參數很敏感，不同軟體處理同批資料的共同特徵可能只有約 10%（Hohrenk 2020）；開源的演算法與參數公開，參數檔可附在論文中供他人重跑。
+   - 工具可串接：例如 MZmine 前處理，再送 GNPS2 做分子網路、SIRIUS 預測結構。
+   - 規模與成本：大型世代研究常在運算叢集上處理上千樣本，不受授權數限制。
+   - 較精確的說法：非標靶探索的開源工具選擇多、新方法多先以開源釋出，而不是開源做得比較好。
+</textarea></section>
+
+</section>
+<!-- ##### 垂直組結束：第 16–22 頁 ##### -->
+
+<!-- ##### 垂直組：第 23–24 頁　MetaboAnalyst（↓ 往下翻） ##### -->
+<section>
+
+<!-- ========== 23. MetaboAnalyst 6.0 ========== -->
+<section class="ma">
+  <h2>MetaboAnalyst 6.0</h2>
+  <img class="ma-logo" src="figures/metaboanalyst6-logo.png" alt="MetaboAnalyst 6.0 logo">
+  <div class="ma-info">
+    <span class="ma-badge">正式站</span>
+    <a href="https://www.metaboanalyst.ca">www.metaboanalyst.ca</a>
+    <span class="ma-sep">｜</span>
+    <span>Pang Z, et al. Nucleic Acids Res 2024;52(W1):W398</span>
+  </div>
+  <figure class="ma-shot">
+    <img src="figures/metaboanalyst6-modules.png" alt="MetaboAnalyst 6.0 module overview">
+    <figcaption>首頁模組總覽：先依輸入資料類型（原始光譜、峰表、通用格式、已註解特徵等），再選擇分析模組</figcaption>
+  </figure>
+  <aside class="notes">
+    <p>MetaboAnalyst 6.0 是目前的正式版（www.metaboanalyst.ca），論文：Pang Z, et al. Nucleic Acids Res 2024;52(W1):W398. doi:10.1093/nar/gkae253。</p>
+    <p>網站以「輸入資料類型 × 分析模組」組織：LC-MS 原始光譜可做光譜處理；峰表可做峰註解與功能分析；通用格式的資料表可做統計、生物標記、劑量反應與統合分析；已註解的特徵可做富集、路徑與網路分析。</p>
+  </aside>
+</section>
+
+<!-- ========== 24. MetaboAnalyst 7.0 ========== -->
+<section class="ma">
+  <h2>MetaboAnalyst 7.0</h2>
+  <img class="ma-logo" src="figures/metaboanalyst7-logo.png" alt="MetaboAnalyst 7.0 logo">
+  <div class="ma-info">
+    <span class="ma-badge dev">開發站預覽</span>
+    <a href="https://dev.metaboanalyst.ca">dev.metaboanalyst.ca</a>
+    <span class="ma-sep">｜</span>
+    <span>正式站仍為 6.0</span>
+  </div>
+  <figure class="ma-shot">
+    <img src="figures/metaboanalyst7-modules.png" alt="MetaboAnalyst 7.0 module overview">
+    <figcaption>Module Overview：依研究領域分列模組，<a href="https://new.metaboanalyst.ca/MetaboAnalyst/faces/AjaxHandler.xhtml?funcNm=Share&ID=ge8kpum9q_31130">範例分享連結</a></figcaption>
+  </figure>
+  <aside class="notes">
+    <p>dev.metaboanalyst.ca 顯示為 MetaboAnalyst 7.0，是開發站預覽；正式站 www.metaboanalyst.ca 仍為 6.0（2026-10 查核）。目前查不到 7.0 的論文或正式發布日期。</p>
+    <p>範例分享連結：https://new.metaboanalyst.ca/MetaboAnalyst/faces/AjaxHandler.xhtml?funcNm=Share&ID=ge8kpum9q_31130</p>
+  </aside>
+</section>
+
+</section>
+<!-- ##### 垂直組結束：第 23–24 頁 ##### -->
+
+</div>
+</div>
+
+<script src="vendor/reveal/reveal.js"></script>
+<script src="vendor/reveal/plugin/notes/notes.js"></script>
+<script src="vendor/reveal/plugin/markdown/markdown.js"></script>
+<script src="vendor/reveal/plugin/zoom/zoom.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1600,
+    height: 900,
+    margin: 0.04,
+    center: false,
+    display: 'flex',
+    hash: true,
+    controls: true,
+    progress: true,
+    slideNumber: false,  // 改用下面寫進每頁的頁碼
+    transition: 'slide',
+    plugins: [RevealMarkdown, RevealNotes, RevealZoom],
+  }).then(() => {
+    // 在每頁右下角加上頁碼（封面不顯示，但仍算第 1 頁）
+    // getSlides() 會把垂直組裡的每一張都算成一頁
+    const slides = Reveal.getSlides();
+    slides.forEach((slide, i) => {
+      if (i === 0) return;
+      const num = document.createElement('div');
+      num.className = 'page-num';
+      num.textContent = `${i + 1} / ${slides.length}`;
+      slide.appendChild(num);
+    });
+  });
+</script>
+</body>
+</html>

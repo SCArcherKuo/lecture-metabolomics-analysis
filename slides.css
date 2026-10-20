@@ -1,0 +1,656 @@
+/* ===== 全域背景與文字色 =====
+   在 theme（moon）之後載入，所以在 :root 重設變數就能覆蓋。
+   個別頁用 data-background-color 指定的顏色仍會優先。 */
+:root {
+  --r-background-color: #e3af90;     /* 背景 */
+  --r-main-color: #e2e8f0;           /* 內文、清單 */
+  --r-heading-color: #993d29;        /* h1 ~ h6 標題 */
+  --r-link-color: #38bdf8;           /* 連結 */
+  --r-heading-text-transform: none;  /* 關掉大小寫轉換 */
+}
+
+/* ===== 頁面骨架 =====
+   Reveal 設定 center: false、display: 'flex'，每頁都是 1600×900 的畫布，
+   內容由上往下排、靠左（和原本 Slides Extended 的效果一樣）。
+   垂直組（外層 section.stack）裡的每一張也套用同樣的設定。 */
+.reveal .slides > section,
+.reveal .slides > section.stack > section {
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: left;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Markdown 頁面裡單獨一行的圖片會被包進 <p>；
+   拿掉這層 <p>，讓圖片直接參與排版。 */
+.reveal .slides section p:has(> img:only-child) {
+  display: contents;
+}
+
+/* 加了 class="center" 的頁：內容放在 .fill 裡，上下左右置中 */
+.reveal .slides section .fill {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.reveal .slides section.center {
+  text-align: center;
+}
+.reveal .slides section.center h1,
+.reveal .slides section.center h2,
+.reveal .slides section.center h3 {
+  color: #993d29;
+}
+
+/* ===== 絕對定位區塊（取代 Slides Extended 的 <grid drag drop>） =====
+   用法：<div class="abs" style="left:X%; top:Y%; width:W%; height:H%">
+   drop="X Y" → left / top，drag="W H" → width / height，單位都是整頁的百分比。
+   預設和 <grid> 一樣：直向排列、水平垂直置中。 */
+.reveal .slides section .abs {
+  position: absolute;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.reveal .slides section .abs.row { flex-direction: row; }
+
+/* ===== 排版小工具（Markdown 頁面也能用） =====
+   .row   ：子元素橫向排列、垂直置中（例如網址＋logo）
+   .cols  ：等寬多欄，每個子 <div> 是一欄
+   .small ：小字（長網址、出處） */
+.reveal .slides section .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+.reveal .slides section .cols {
+  display: flex;
+  gap: 80px;
+  width: 100%;
+}
+.reveal .slides section .cols > * { flex: 1; }
+.reveal .slides section .cols > * > :first-child { margin-top: 0; }
+.reveal .slides section .small { font-size: 24px; }
+
+/* ===== 表格頁 =====
+   Markdown 頁面開頭加 <!-- .slide: class="table-slide" --> 即套用。
+   白底深字，表頭用標題色。 */
+.reveal section.table-slide h3 {
+  margin: -10px 0 16px;
+  font-size: 34px;
+  color: #993d29;
+}
+.reveal section.table-slide table {
+  margin: 0;  /* Reveal 預設 margin: auto，在 flex 版面會把表格推到垂直置中 */
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 28px;
+  line-height: 1.3;
+  color: #222;
+  background: rgba(255, 255, 255, 0.85);
+}
+.reveal section.table-slide th {
+  padding: 10px 14px;
+  border: 0;
+  background: #993d29;
+  color: #fff;
+  font-weight: 700;
+  text-align: left;
+}
+.reveal section.table-slide td {
+  padding: 8px 14px;
+  border: 0;
+  border-bottom: 1px solid rgba(153, 61, 41, 0.25);
+  vertical-align: top;
+}
+.reveal section.table-slide td strong { white-space: nowrap; }
+.reveal section.table-slide .small {
+  margin: 12px 0 0;
+  color: #5a2a1e;
+}
+.reveal section.table-slide.mid table { font-size: 24px; }
+
+/* 功能比較表（5 欄）：固定欄寬，兩頁對齊；工具名稱允許換行 */
+.reveal section.table-slide.features table { table-layout: fixed; }
+.reveal section.table-slide.features th:nth-child(1) { width: 13%; }
+.reveal section.table-slide.features th:nth-child(2) { width: 14%; }
+.reveal section.table-slide.features th:nth-child(3) { width: 20%; }
+.reveal section.table-slide.features th:nth-child(4) { width: 23%; }
+.reveal section.table-slide.features th:nth-child(5) { width: 30%; }
+.reveal section.table-slide.features td strong { white-space: normal; }
+
+/* 選擇軟體表（3 欄）：考量欄較窄，兩個比較欄等寬 */
+.reveal section.table-slide.choose table { table-layout: fixed; }
+.reveal section.table-slide.choose th:nth-child(1) { width: 18%; }
+.reveal section.table-slide.choose th:nth-child(2),
+.reveal section.table-slide.choose th:nth-child(3) { width: 41%; }
+
+/* 分析流程階段表（4 欄） */
+.reveal section.table-slide.stages table { table-layout: fixed; }
+.reveal section.table-slide.stages th:nth-child(1) { width: 19%; }
+.reveal section.table-slide.stages th:nth-child(2) { width: 23%; }
+.reveal section.table-slide.stages th:nth-child(3) { width: 38%; }
+.reveal section.table-slide.stages th:nth-child(4) { width: 20%; }
+.reveal section.table-slide.stages td strong { white-space: normal; }
+
+/* ===== 分析流程圖 =====
+   四個階段區塊橫向排列，下方為貫穿全程的 QC 帶與標靶分支 */
+.reveal section.workflow .wf-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+}
+.reveal section.workflow .wf-phase {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 0 12px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.reveal section.workflow .wf-head {
+  padding: 10px 14px;
+  background: #993d29;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+}
+.reveal section.workflow .wf-step {
+  margin: 0 12px;
+  padding: 8px 12px;
+  border-left: 6px solid #993d29;
+  background: rgba(153, 61, 41, 0.07);
+  color: #222;
+  font-size: 21px;
+  line-height: 1.35;
+}
+.reveal section.workflow .wf-step b {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+.reveal section.workflow .wf-step.wf-ext {
+  border-left-style: dashed;
+  background: transparent;
+}
+.reveal section.workflow .wf-loop {
+  margin: 0 12px;
+  padding: 4px 10px;
+  color: #993d29;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+}
+.reveal section.workflow .wf-arrow {
+  align-self: center;
+  color: #993d29;
+  font-size: 40px;
+  line-height: 1;
+}
+.reveal section.workflow .wf-qc,
+.reveal section.workflow .wf-targeted {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 14px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: #222;
+  font-size: 22px;
+  line-height: 1.35;
+}
+.reveal section.workflow .wf-qc {
+  background: rgba(153, 61, 41, 0.18);
+  border: 2px solid #993d29;
+}
+.reveal section.workflow .wf-targeted {
+  background: rgba(255, 255, 255, 0.6);
+  border: 2px dashed #993d29;
+}
+.reveal section.workflow .wf-qc b,
+.reveal section.workflow .wf-targeted b {
+  margin-right: 14px;
+  color: #993d29;
+}
+
+/* MS/MS 光譜資料庫表（5 欄）：固定欄寬，四頁對齊 */
+.reveal section.table-slide.dbtable table { table-layout: fixed; }
+.reveal section.table-slide.dbtable th:nth-child(1) { width: 11%; }
+.reveal section.table-slide.dbtable th:nth-child(2) { width: 28%; }
+.reveal section.table-slide.dbtable th:nth-child(3) { width: 24%; }
+.reveal section.table-slide.dbtable th:nth-child(4) { width: 19%; }
+.reveal section.table-slide.dbtable th:nth-child(5) { width: 18%; }
+.reveal section.table-slide.dbtable td strong { white-space: normal; }
+
+/* 鑑定等級合併頁：等級＋兩套定義＋實例 */
+.reveal section.table-slide.idmerged h3 { font-size: 30px; }
+.reveal section.table-slide.idmerged table { table-layout: fixed; }
+.reveal section.table-slide.idmerged th:nth-child(1) { width: 6%; }
+.reveal section.table-slide.idmerged th:nth-child(2) { width: 24%; }
+.reveal section.table-slide.idmerged th:nth-child(3) { width: 24%; }
+.reveal section.table-slide.idmerged th:nth-child(4) { width: 46%; }
+.reveal section.table-slide.idmerged td:first-child { text-align: center; }
+
+/* ===== 鑑定機率頁（Metz 2025）：左圖右文 ===== */
+.reveal section.metz h3 {
+  margin: -10px 0 16px;
+  font-size: 34px;
+  color: #993d29;
+}
+.reveal section.metz .metz-row {
+  display: flex;
+  gap: 28px;
+  width: 100%;
+  align-items: flex-start;
+}
+.reveal section.metz .metz-row { justify-content: center; }
+.reveal section.metz figure {
+  flex: 0 0 82%;
+  margin: 0;
+  padding: 12px;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 10px;
+}
+.reveal section.metz figure img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+}
+.reveal section.metz figcaption {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #555;
+  text-align: right;
+}
+
+/* 判讀原則頁：定義表＋重點清單 */
+.reveal section.table-slide.principles th:nth-child(1) { width: 16%; }
+.reveal section.table-slide.principles ul {
+  margin: 20px 0 0 1.2em;
+  font-size: 26px;
+  line-height: 1.4;
+  color: #3b1a12;
+}
+.reveal section.table-slide.principles li { margin-bottom: 6px; }
+
+/* 商用軟體比較表（5 欄）：固定欄寬，三頁對齊 */
+.reveal section.table-slide.commercial table { table-layout: fixed; }
+.reveal section.table-slide.commercial th:nth-child(1) { width: 11%; }
+.reveal section.table-slide.commercial th:nth-child(2) { width: 15%; }
+.reveal section.table-slide.commercial th:nth-child(3) { width: 26%; }
+.reveal section.table-slide.commercial th:nth-child(4) { width: 23%; }
+.reveal section.table-slide.commercial th:nth-child(5) { width: 25%; }
+.reveal section.table-slide.commercial td strong { white-space: normal; }
+.reveal section.table-slide.dense table { font-size: 22px; }
+
+/* ===== 簡報邊框 =====
+   畫在畫布外側 12px（落在 Reveal 的 margin 區），不會壓到貼邊的內容。
+   顏色、粗細、距離改這三個變數即可。 */
+:root {
+  --frame-color: rgba(255, 255, 255, 0.1);
+  --frame-width: 2px;
+  --frame-offset: 12px;
+}
+/* 只畫在實際的投影片上，不畫在垂直組的外層 */
+.reveal .slides > section:not(.stack)::before,
+.reveal .slides > section.stack > section::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--frame-offset));
+  border: var(--frame-width) solid var(--frame-color);
+  pointer-events: none;
+}
+
+/* ===== 頁碼 =====
+   由 index.html 的腳本加進每頁，位置在畫布右下角、邊框內側。 */
+.reveal .slides section .page-num {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 20px;
+  line-height: 1;
+  color: #993d29;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* ===== 全域浮水印 ===== */
+.reveal .slides > section:not(.stack)::after,
+.reveal .slides > section.stack > section::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 100px;
+  bottom: -60px;
+  width: 1360px;
+  height: 960px;
+  background-image: url("figures/watermark-lines.png");  /* 只留線條的透明背景版 */
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.01;  /* 浮水印濃淡：數字越大越明顯 */
+  pointer-events: none;
+  z-index: -1;  /* 放在內容後面：被表格、圖片擋住的地方不會干擾閱讀 */
+}
+
+/* ===== 元件：圖片＋說明文字 ===== */
+.instrument-panel img {
+  margin: 0;
+  min-height: 0;
+}
+.reveal .instrument-panel.paper img { max-width: 100%; }
+.instrument-panel p {
+  margin: 0;
+  line-height: 3;
+  font-size: 18px;
+  color: #111;
+}
+.reveal .instrument-panel a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== 元件：分組標題 ===== */
+.group-title p {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  color: #993d29;
+}
+
+/* ===== 元件：方法卡片牆 =====
+   .method-cards 是容器，卡片 130×130 依序排列，排滿換行；
+   加上 .col 則改成由上往下排、排滿換欄。 */
+.reveal .slides section .method-cards {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-left: 7px;
+}
+.reveal .slides section .method-cards.col { flex-direction: column; }
+
+.method-card {
+  position: relative;
+  flex: 0 0 130px;
+  width: 130px;
+  height: 130px;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0;
+  background: white;
+  border-radius: 20px;
+}
+/* 第 2 頁右上「本次使用的組合」：放大版卡片（150px） */
+.reveal .slides section .method-cards.featured .method-card {
+  flex-basis: 150px;
+  width: 150px;
+  height: 150px;
+}
+.reveal .slides section .method-cards.featured .method-card span { font-size: 18px; }
+
+.reveal .method-card img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  object-fit: contain;
+  border-radius: 20px;
+}
+
+.method-card span {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 2;
+  max-width: calc(100% - 12px);
+  padding: 2px 8px;
+  color: #111;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+/* ===== MetaboAnalyst 介紹頁：右上 logo、網址列、白框截圖 ===== */
+.reveal section.ma .ma-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 140px;
+  margin: 0;
+}
+.reveal section.ma .ma-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: -6px 0 22px;
+  font-size: 26px;
+  color: #3b1a12;
+}
+.reveal section.ma .ma-info a {
+  color: #993d29;
+  font-weight: 700;
+  text-decoration: none;
+}
+.reveal section.ma .ma-badge {
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #993d29;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 700;
+}
+.reveal section.ma .ma-badge.dev {
+  background: transparent;
+  border: 2px dashed #993d29;
+  color: #993d29;
+}
+.reveal section.ma .ma-sep { color: rgba(59, 26, 18, 0.5); }
+.reveal section.ma .ma-shot {
+  align-self: center;
+  margin: 0;
+  padding: 14px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(59, 26, 18, 0.18);
+}
+.reveal section.ma .ma-shot img {
+  display: block;
+  max-width: 1440px;
+  max-height: 540px;
+  margin: 0 auto;
+}
+.reveal section.ma .ma-shot figcaption {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #555;
+  text-align: center;
+}
+.reveal section.ma .ma-shot figcaption a { color: #993d29; }
+
+/* ===== Feature Table 示意頁 ===== */
+.reveal section.ftable h3 {
+  margin: -10px 0 14px;
+  font-size: 34px;
+  color: #993d29;
+}
+.reveal section.ftable table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 22px;
+  line-height: 1.25;
+  color: #222;
+  background: rgba(255, 255, 255, 0.9);
+}
+.reveal section.ftable th {
+  padding: 6px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: #993d29;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: middle;
+}
+.reveal section.ftable th:first-child { width: 17%; }
+.reveal section.ftable th:nth-child(2) { width: 17%; }
+.reveal section.ftable th.grp { background: #7a2f1f; }
+.reveal section.ftable td {
+  padding: 7px 8px;
+  border: 0;
+  border-bottom: 1px solid rgba(153, 61, 41, 0.2);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.reveal section.ftable td:nth-child(1),
+.reveal section.ftable td:nth-child(2) { text-align: left; }
+.reveal section.ftable tr.phe td { background: rgba(153, 61, 41, 0.08); }
+.reveal section.ftable td.na { color: #999; text-align: center; }
+.reveal section.ftable td.bad { color: #b42318; font-weight: 700; }
+.reveal section.ftable .ft-unit {
+  margin: 6px 0 14px;
+  font-size: 18px;
+  color: #5a2a1e;
+}
+.reveal section.ftable .ft-notes {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+}
+.reveal section.ftable .ft-notes > div {
+  flex: 1;
+  padding: 10px 14px;
+  border-left: 6px solid #993d29;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #222;
+  font-size: 21px;
+  line-height: 1.4;
+}
+.reveal section.ftable .ft-notes b {
+  display: block;
+  margin-bottom: 2px;
+  color: #993d29;
+}
+
+/* ===== 單張示意圖頁：白底框置中 ===== */
+.reveal section.figslide h3 {
+  margin: -10px 0 14px;
+  font-size: 34px;
+  color: #993d29;
+}
+.reveal section.figslide figure {
+  align-self: center;
+  margin: 0;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(59, 26, 18, 0.18);
+}
+.reveal section.figslide figure img {
+  display: block;
+  max-width: 1300px;
+  max-height: 660px;
+  margin: 0 auto;
+}
+
+/* 示意圖＋右側維度面板 */
+.reveal section.figslide .fig-row {
+  display: flex;
+  gap: 22px;
+  width: 100%;
+  align-items: stretch;
+}
+.reveal section.figslide .fig-row figure {
+  flex: 0 0 auto;
+  align-self: flex-start;
+}
+.reveal section.figslide .fig-row figure img {
+  max-width: 960px;
+  max-height: 640px;
+}
+.reveal section.figslide .dim-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #222;
+  font-size: 21px;
+  line-height: 1.35;
+}
+.reveal section.figslide .dim-title {
+  padding: 8px 14px;
+  border-radius: 8px;
+  background: #993d29;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+}
+.reveal section.figslide .dim-carry {
+  padding: 6px 12px;
+  border: 2px dashed rgba(153, 61, 41, 0.5);
+  border-radius: 8px;
+  color: #5a2a1e;
+  font-size: 19px;
+}
+.reveal section.figslide .dim {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.85);
+}
+.reveal section.figslide .dim.new { border-left: 6px solid #2e7d32; }
+.reveal section.figslide .dim-no {
+  color: #993d29;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.reveal section.figslide .dim.new .dim-no { color: #2e7d32; }
+.reveal section.figslide .dim b,
+.reveal section.figslide .dim-views b {
+  display: block;
+  font-size: 22px;
+}
+.reveal section.figslide .dim-views {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-left: 4px solid rgba(153, 61, 41, 0.6);
+  font-size: 19px;
+  color: #3b1a12;
+}
+.reveal section.figslide .dim-views b { font-size: 20px; color: #993d29; }
