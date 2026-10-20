@@ -47,6 +47,15 @@
 .reveal .slides section.center h3 {
   color: #993d29;
 }
+/* 封面標題的連結：沿用標題色，滑過時才出現底線 */
+.reveal .slides section.center h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+.reveal .slides section.center h1 a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.12em;
+}
 
 /* ===== 絕對定位區塊（取代 Slides Extended 的 <grid drag drop>） =====
    用法：<div class="abs" style="left:X%; top:Y%; width:W%; height:H%">
