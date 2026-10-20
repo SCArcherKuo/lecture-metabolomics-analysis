@@ -550,26 +550,6 @@
   font-size: 18px;
   color: #5a2a1e;
 }
-.reveal section.ftable .ft-notes {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-}
-.reveal section.ftable .ft-notes > div {
-  flex: 1;
-  padding: 10px 14px;
-  border-left: 6px solid #993d29;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.75);
-  color: #222;
-  font-size: 21px;
-  line-height: 1.4;
-}
-.reveal section.ftable .ft-notes b {
-  display: block;
-  margin-bottom: 2px;
-  color: #993d29;
-}
 
 /* ===== 單張示意圖頁：白底框置中 ===== */
 .reveal section.figslide h3 {
