@@ -152,7 +152,7 @@
 .reveal section.table-slide.stages td strong { white-space: normal; }
 
 /* ===== 分析流程圖 =====
-   四個階段區塊橫向排列，下方為貫穿全程的 QC 帶與標靶分支 */
+   四個階段區塊橫向排列；QC 與標靶分支的說明放在講者備註 */
 .reveal section.workflow .wf-row {
   display: flex;
   align-items: stretch;
@@ -209,30 +209,6 @@
   color: #993d29;
   font-size: 40px;
   line-height: 1;
-}
-.reveal section.workflow .wf-qc,
-.reveal section.workflow .wf-targeted {
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: 14px;
-  padding: 10px 16px;
-  border-radius: 10px;
-  color: #222;
-  font-size: 22px;
-  line-height: 1.35;
-}
-.reveal section.workflow .wf-qc {
-  background: rgba(153, 61, 41, 0.18);
-  border: 2px solid #993d29;
-}
-.reveal section.workflow .wf-targeted {
-  background: rgba(255, 255, 255, 0.6);
-  border: 2px dashed #993d29;
-}
-.reveal section.workflow .wf-qc b,
-.reveal section.workflow .wf-targeted b {
-  margin-right: 14px;
-  color: #993d29;
 }
 
 /* MS/MS 光譜資料庫表（5 欄）：固定欄寬，四頁對齊 */
