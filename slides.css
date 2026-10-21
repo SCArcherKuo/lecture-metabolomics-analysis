@@ -386,7 +386,7 @@
   background: white;
   border-radius: 20px;
 }
-/* 第 2 頁右上「本次使用的組合」：放大版卡片（150px） */
+/* 第 2 頁右下「本次使用的組合」：放大版卡片（150px） */
 .reveal .slides section .method-cards.featured .method-card {
   flex-basis: 150px;
   width: 150px;
