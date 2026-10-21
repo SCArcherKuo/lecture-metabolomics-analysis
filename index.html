@@ -14,6 +14,27 @@
 <div class="reveal">
 <div class="slides">
 
+<!--
+  檔案結構
+  - 每頁是一個 <section>；連續幾頁包在外層 <section> 裡成為垂直組（在第一頁按 ↓ 往下翻）。
+  - 兩種寫法：
+    · HTML 頁：直接寫 HTML，講者備註放在 <aside class="notes">。
+    · Markdown 頁：<section data-markdown><textarea data-template> 內寫 Markdown，
+      第一行用「.slide: class="…"」的 HTML 註解指定版型，講者備註寫在「Note:」之後。
+      textarea 內的縮排與空行會影響 Markdown 解析，修改時不要重新縮排。
+  - 頁碼由頁尾的程式依順序自動產生；下方註解的編號只供對照，增刪頁面時一併更新。
+
+  頁面目錄
+   1      封面
+   2      MS 分析平台組成
+   3–5    資料型態：MS1 → MS2 → 特徵表
+   6–7    代謝物鑑定信心
+   8–12   MS/MS 光譜資料庫
+   13–17  分析流程（流程圖、階段說明、msConvert、MetaboLights）
+   18–24  分析軟體：開源、商用與選擇
+   25–26  MetaboAnalyst
+-->
+
 <!-- ========== 1. 封面 ========== -->
 <section class="center">
   <div class="fill">
@@ -88,10 +109,6 @@
     <div class="method-card"><img src="figures/scan-neutral-loss.png" alt=""><span>Neutral loss</span></div>
   </div>
 </section>
-
-<!-- 第 3 頁起以 Markdown 撰寫：
-     每個 <section data-markdown> 是一頁，內容寫在 <textarea data-template> 裡。
-     圖片寬度：在 ![](figures/圖檔.png) 後面加一個 HTML 註解，內容寫 .element: style="height: 180px"。 -->
 
 <!-- ##### 垂直組：第 3–5 頁　資料型態：MS1 → MS2 → 特徵表（↓ 往下翻） ##### -->
 <section>
@@ -321,7 +338,6 @@ Note:
 | **MassBank** | 社群共建的開放實驗質譜庫，以標準品光譜為主；每筆紀錄附完整儀器條件，並逐筆標註授權 | 2025.05.1 版：光譜 119,845 筆／化合物 18,529 種（去重後）；網站目前收錄 139,006 筆紀錄（2026.03 版） | 免費查詢；可經 GitHub、Zenodo 下載，另有提供 REST API | 中高：實驗來源明確，品質依提交單位而異 |
 | **METLIN** | Scripps 以化學標準品自建的 MS/MS 庫；每個標準品都在正、負離子模式及 4 種碰撞能量下量測 | 已量測逾 960,000 種標準品；960K 版未公布光譜總數（2020 年時已超過 400 萬筆） | 須寄信向 Scripps 申請帳號；雲端版為付費訂閱，條款禁止大量下載 | 高：大規模標準品實測，量測條件標準化 |
 | **MSnLib** | IOCB Prague 以 Orbitrap ID-X 建立的多階碎裂（MS²–MSⁿ）標準品庫；以 flow injection 量測，沒有滯留時間資訊 | 論文統計（7 組化合物庫）：MSⁿ 逾 230 萬筆、MS² 357,065 筆／化合物 30,008 種 | 免費，CC BY 4.0；可經 Zenodo 下載，GNPS2、MoNA 亦有收錄 | 中高至高：標準品實測；pseudo-MS² 應另計 |
-
 
 Note:
 維運機構與近況：
@@ -856,11 +872,11 @@ Note:
   </div>
   <figure class="ma-shot">
     <img src="figures/metaboanalyst7-modules.png" alt="MetaboAnalyst 7.0 module overview">
-    <figcaption>Module Overview：依研究領域分列模組，<a href="https://new.metaboanalyst.ca/MetaboAnalyst/faces/AjaxHandler.xhtml?funcNm=Share&ID=ge8kpum9q_31130">範例分享連結</a></figcaption>
+    <figcaption>Module Overview：依研究領域分列模組，<a href="https://new.metaboanalyst.ca/MetaboAnalyst/faces/AjaxHandler.xhtml?funcNm=Share&amp;ID=ge8kpum9q_31130">範例分享連結</a></figcaption>
   </figure>
   <aside class="notes">
     <p>dev.metaboanalyst.ca 顯示為 MetaboAnalyst 7.0，是開發站預覽；正式站 www.metaboanalyst.ca 仍為 6.0（2026-10 查核）。目前查不到 7.0 的論文或正式發布日期。</p>
-    <p>範例分享連結：https://new.metaboanalyst.ca/MetaboAnalyst/faces/AjaxHandler.xhtml?funcNm=Share&ID=ge8kpum9q_31130</p>
+    <p>範例分享連結：https://new.metaboanalyst.ca/MetaboAnalyst/faces/AjaxHandler.xhtml?funcNm=Share&amp;ID=ge8kpum9q_31130</p>
   </aside>
 </section>
 
