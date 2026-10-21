@@ -190,6 +190,13 @@
       <li><b>一個代謝物 → 多個特徵：</b>F1–F4 都來自苯丙胺酸（質子化、鈉加成、同位素、源內碎片），需歸併才不會重複計算</li>
       <li><b>品質線索：</b>F6 有遺漏值且 QC RSD 高、F7 在空白樣本也有訊號 → 在過濾階段移除</li>
     </ul>
+    <p><b>RSD 與 D-ratio（第 ⑤ 階段的兩個 QC 過濾指標）</b></p>
+    <ul>
+      <li><b>RSD<sub>QC</sub> = SD<sub>QC</sub> ÷ 平均<sub>QC</sub> × 100%：</b>同一管 pooled QC 重複打針，量得穩不穩。常用門檻 &lt; 20%（非標靶探索常放寬到 30%）。</li>
+      <li><b>D-ratio = SD<sub>QC</sub> ÷ SD<sub>樣本</sub> × 100%：</b>技術雜訊占總變異的比例；分母含生物差異＋技術雜訊。接近 0% 表示變異主要來自生物，接近或超過 100% 表示樣本差異和量測雜訊差不多。常用門檻 &lt; 50%（Broadhurst 2018）。</li>
+      <li><b>兩者分工：</b>RSD 看「量得準不準」，D-ratio 看「量到的差異是不是生物差異」。用本表試算：F1 RSD 1.4%、D-ratio ≈ 4% → 保留；F5 RSD 只有 2.5%，但組間幾乎沒差異，D-ratio ≈ 60% → RSD 會放行、D-ratio 會濾掉；F7 D-ratio ≈ 144% → 純背景訊號。</li>
+      <li>本表只有兩針 QC，數值僅供示範；實務上應在序列中定期插入足夠多針 pooled QC。</li>
+    </ul>
     <p>這是教學用的示意表，數值為虛構，但 m/z 與 RSD 都可核算：苯丙胺酸 [M+H]⁺ 166.0863、[M+Na]⁺ 188.0682、¹³C 同位素峰 167.0896、源內碎片 C₈H₁₀N⁺ 120.0808；白胺酸／異白胺酸 [M+H]⁺ 132.1019。QC RSD 以兩針 QC 計算，只為示範；實務上應有足夠多的 pooled QC 注射。</p>
     <ul>
       <li>特徵表是第 ④ 階段（特徵偵測：峰偵測、對齊、補峰）的輸出，也是後續過濾、補值、標準化與統計的起點。</li>
@@ -422,7 +429,7 @@ Note:
 </section>
 <!-- ##### 垂直組結束：第 8–12 頁 ##### -->
 
-<!-- ##### 垂直組：第 13–15 頁　分析流程（↓ 往下翻） ##### -->
+<!-- ##### 垂直組：第 13–16 頁　分析流程（↓ 往下翻） ##### -->
 <section>
 
 <!-- ========== 13. 分析流程：流程圖 ========== -->
@@ -545,13 +552,38 @@ Note:
 - ⑩ QC 回報與資料存放：Kirwan JA, et al. Metabolomics 2022;18:70. doi:10.1007/s11306-022-01926-3；Yurekten O, et al. Nucleic Acids Res 2024. doi:10.1093/nar/gkad1045；Sud M, et al. Nucleic Acids Res 2016. doi:10.1093/nar/gkv1042
 </textarea></section>
 
+<!-- ========== 16. MetaboLights ========== -->
+<section class="ma">
+  <h2>MetaboLights</h2>
+  <div class="ma-info">
+    <span class="ma-badge">公開資料庫</span>
+    <a href="https://www.ebi.ac.uk/metabolights/" target="_blank" rel="noopener">www.ebi.ac.uk/metabolights</a>
+    <span class="ma-sep">｜</span>
+    <span>Yurekten O, et al. Nucleic Acids Res 2024;52(D1):D640</span>
+  </div>
+  <figure class="ma-shot">
+    <img src="figures/metabolights-about.png" alt="MetaboLights home page and About section">
+    <figcaption>EMBL-EBI 維運的代謝體學研究資料庫：上傳與搜尋原始資料＋詮釋資料；研究編號為 MTBLS＋數字，本課案例即 <a href="https://www.ebi.ac.uk/metabolights/MTBLS2542" target="_blank" rel="noopener">MTBLS2542</a></figcaption>
+  </figure>
+  <aside class="notes">
+    <ul>
+      <li><b>是什麼：</b>EMBL-EBI 維運的代謝體學公開資料庫，跨物種、跨技術；每個研究收錄原始實驗資料與描述樣本、分析方法的詮釋資料，也連到代謝物結構、參考光譜與生物角色。</li>
+      <li><b>為什麼重要：</b>多家主要期刊與歐洲生命科學資料基礎設施 ELIXIR 推薦的代謝體學資料存放處；部分期刊要求投稿時提供資料存放編號（如 MTBLS 編號）。對應流程圖最後一步「報告與資料存放」。</li>
+      <li><b>怎麼用：</b>首頁可依代謝物、物種或研究搜尋；研究編號格式為 MTBLS＋數字。公開 API 在 2026-10-21 列出 3,554 個公開研究。</li>
+      <li><b>和本課的關係：</b>第 2 頁的 COVID-19 trans-omics 研究就是 MTBLS2542，本課 pyOpenMS 案例分析用的原始檔也從這裡下載。</li>
+      <li><b>近期發展：</b>MetaboLights Labs，以 Galaxy 執行全庫標準化的分析流程，方便重複利用公開資料。</li>
+    </ul>
+    <p>引用：Yurekten O, et al. MetaboLights: open data repository for metabolomics. Nucleic Acids Res 2024;52(D1):D640–D646. doi:10.1093/nar/gkad1045。網站內容依 EMBL-EBI Terms of Use 提供；程式碼以 Apache 2.0 公開於 github.com/EBI-Metabolights。</p>
+  </aside>
 </section>
-<!-- ##### 垂直組結束：第 13–15 頁 ##### -->
 
-<!-- ##### 垂直組：第 16–22 頁　分析軟體：開源、商用與選擇（↓ 往下翻） ##### -->
+</section>
+<!-- ##### 垂直組結束：第 13–16 頁 ##### -->
+
+<!-- ##### 垂直組：第 17–23 頁　分析軟體：開源、商用與選擇（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 16. 開源軟體：主要工具功能比較（1／2） ========== -->
+<!-- ========== 17. 開源軟體：主要工具功能比較（1／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense features" -->
 ## Open-source / Freeware
@@ -567,7 +599,7 @@ Note:
 | **OpenMS** | CLI（TOPP）、Python API（pyOpenMS）、GUI（TOPPView）；可接入 Galaxy、Nextflow | LC-MS、IMS-MS（FAIMS、PASEF）；MS/MS：DDA、DIA（僅標靶式 OpenSWATH） | feature detection、alignment／feature linking、adduct grouping、accurate mass search | **適合建構模組化、可重現的大規模質譜流程**，提供約 150 個工具；但需自行串接與調參，入門門檻高。 |
 </textarea></section>
 
-<!-- ========== 17. 開源軟體：主要工具功能比較（2／2） ========== -->
+<!-- ========== 18. 開源軟體：主要工具功能比較（2／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense features" -->
 ## Open-source / Freeware
@@ -581,7 +613,7 @@ Note:
 | **Workflow4<wbr>Metabolomics** | Web GUI（Galaxy） | LC-MS、GC-MS、DI／FIA-MS、NMR；MS/MS：DDA；表格：峰強度 | preprocessing（XCMS、CAMERA）、normalization／QC、statistics（PLS／OPLS）、annotation | **以 Galaxy 串接完整流程，結果可分享、可重現**，工具也能安裝到其他 Galaxy 伺服器；但未註冊使用有額度限制。 |
 </textarea></section>
 
-<!-- ========== 18. 開源軟體：授權與使用條件 ========== -->
+<!-- ========== 19. 開源軟體：授權與使用條件 ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide mid" -->
 ## Open-source / Freeware
@@ -602,7 +634,7 @@ Note:
 <p class="small">* 可免費商用；再散布（含修改後）時須遵守原授權：GPL／LGPL 須向取得者提供原始碼，CC BY 須標示出處。授權資訊查核日期：2026 年 10 月。</p>
 </textarea></section>
 
-<!-- ========== 19. 商用軟體比較（1／3） ========== -->
+<!-- ========== 20. 商用軟體比較（1／3） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense commercial" -->
 ## Commercial / Licensed
@@ -630,7 +662,7 @@ Note:
 - MetaboScape 2026b（官方產品頁）：https://www.bruker.com/en/products-and-solutions/mass-spectrometry/ms-software/metaboscape.html
 </textarea></section>
 
-<!-- ========== 20. 商用軟體比較（2／3） ========== -->
+<!-- ========== 21. 商用軟體比較（2／3） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense commercial" -->
 ## Commercial / Licensed
@@ -655,7 +687,7 @@ Note:
 - MassHunter Explorer 2.0（說明手冊 D0039646，2025/9）：https://www.agilent.com/cs/library/usermanuals/public/D0039646%20MassHunter%20Explorer%20Introduction%20Workbook.pdf
 </textarea></section>
 
-<!-- ========== 21. 商用軟體比較（3／3） ========== -->
+<!-- ========== 22. 商用軟體比較（3／3） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense commercial" -->
 ## Commercial / Licensed
@@ -681,7 +713,7 @@ Note:
 - biocrates 試劑套組儀器相容性（MxP Quant 500 XL）：https://biocrates.com/mxp-quant-500-xl/
 </textarea></section>
 
-<!-- ========== 22. 如何選擇軟體：商用 vs 開源 ========== -->
+<!-- ========== 23. 如何選擇軟體：商用 vs 開源 ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide choose" -->
 ## Commercial vs Open-source / Freeware
@@ -726,12 +758,12 @@ Note:
 </textarea></section>
 
 </section>
-<!-- ##### 垂直組結束：第 16–22 頁 ##### -->
+<!-- ##### 垂直組結束：第 17–23 頁 ##### -->
 
-<!-- ##### 垂直組：第 23–24 頁　MetaboAnalyst（↓ 往下翻） ##### -->
+<!-- ##### 垂直組：第 24–25 頁　MetaboAnalyst（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 23. MetaboAnalyst 6.0 ========== -->
+<!-- ========== 24. MetaboAnalyst 6.0 ========== -->
 <section class="ma">
   <h2>MetaboAnalyst 6.0</h2>
   <img class="ma-logo" src="figures/metaboanalyst6-logo.png" alt="MetaboAnalyst 6.0 logo">
@@ -751,7 +783,7 @@ Note:
   </aside>
 </section>
 
-<!-- ========== 24. MetaboAnalyst 7.0 ========== -->
+<!-- ========== 25. MetaboAnalyst 7.0 ========== -->
 <section class="ma">
   <h2>MetaboAnalyst 7.0</h2>
   <img class="ma-logo" src="figures/metaboanalyst7-logo.png" alt="MetaboAnalyst 7.0 logo">
@@ -772,32 +804,7 @@ Note:
 </section>
 
 </section>
-<!-- ##### 垂直組結束：第 23–24 頁 ##### -->
-
-<!-- ========== 25. MetaboLights ========== -->
-<section class="ma">
-  <h2>MetaboLights</h2>
-  <div class="ma-info">
-    <span class="ma-badge">公開資料庫</span>
-    <a href="https://www.ebi.ac.uk/metabolights/" target="_blank" rel="noopener">www.ebi.ac.uk/metabolights</a>
-    <span class="ma-sep">｜</span>
-    <span>Yurekten O, et al. Nucleic Acids Res 2024;52(D1):D640</span>
-  </div>
-  <figure class="ma-shot">
-    <img src="figures/metabolights-about.png" alt="MetaboLights home page and About section">
-    <figcaption>EMBL-EBI 維運的代謝體學研究資料庫：上傳與搜尋原始資料＋詮釋資料；研究編號為 MTBLS＋數字，本課案例即 <a href="https://www.ebi.ac.uk/metabolights/MTBLS2542" target="_blank" rel="noopener">MTBLS2542</a></figcaption>
-  </figure>
-  <aside class="notes">
-    <ul>
-      <li><b>是什麼：</b>EMBL-EBI 維運的代謝體學公開資料庫，跨物種、跨技術；每個研究收錄原始實驗資料與描述樣本、分析方法的詮釋資料，也連到代謝物結構、參考光譜與生物角色。</li>
-      <li><b>為什麼重要：</b>多家主要期刊與歐洲生命科學資料基礎設施 ELIXIR 推薦的代謝體學資料存放處；部分期刊要求投稿時提供資料存放編號（如 MTBLS 編號）。對應流程圖最後一步「報告與資料存放」。</li>
-      <li><b>怎麼用：</b>首頁可依代謝物、物種或研究搜尋；研究編號格式為 MTBLS＋數字。公開 API 在 2026-10-21 列出 3,554 個公開研究。</li>
-      <li><b>和本課的關係：</b>第 2 頁的 COVID-19 trans-omics 研究就是 MTBLS2542，本課 pyOpenMS 案例分析用的原始檔也從這裡下載。</li>
-      <li><b>近期發展：</b>MetaboLights Labs，以 Galaxy 執行全庫標準化的分析流程，方便重複利用公開資料。</li>
-    </ul>
-    <p>引用：Yurekten O, et al. MetaboLights: open data repository for metabolomics. Nucleic Acids Res 2024;52(D1):D640–D646. doi:10.1093/nar/gkad1045。網站內容依 EMBL-EBI Terms of Use 提供；程式碼以 Apache 2.0 公開於 github.com/EBI-Metabolights。</p>
-  </aside>
-</section>
+<!-- ##### 垂直組結束：第 24–25 頁 ##### -->
 
 </div>
 </div>
