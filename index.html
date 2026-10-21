@@ -26,13 +26,13 @@
 
   頁面目錄
    1      封面
-   2      MS 分析平台組成
-   3–5    資料型態：MS1 → MS2 → 特徵表
-   6–7    代謝物鑑定信心
-   8–12   MS/MS 光譜資料庫
-   13–17  分析流程（流程圖、階段說明、msConvert、MetaboLights）
-   18–24  分析軟體：開源、商用與選擇
-   25–26  MetaboAnalyst
+   2–3    MS 分析平台組成（第 3 頁加上範例論文與本次組合）
+   4–6    資料型態：MS1 → MS2 → 特徵表
+   7–8    代謝物鑑定信心
+   9–13   MS/MS 光譜資料庫
+   14–18  分析流程（流程圖、階段說明、msConvert、MetaboLights）
+   19–25  分析軟體：開源、商用與選擇
+   26–27  MetaboAnalyst
 -->
 
 <!-- ========== 1. 封面 ========== -->
@@ -44,8 +44,64 @@
   </div>
 </section>
 
-<!-- ========== 2. MS 分析平台組成 ========== -->
+<!-- ##### 垂直組：第 2–3 頁　MS 分析平台組成（↓ 往下翻） ##### -->
 <section>
+
+<!-- ========== 2. MS 分析平台組成（只有組態） ========== -->
+<!-- 2 → 3 原地淡入淡出：上方組態不動，看起來像按一下後下方範例才出現 -->
+<section data-transition="slide-in fade-out">
+  <h2>Recall: Configuration of MS-Based Analytical Platform</h2>
+
+  <!-- 分組標題 -->
+  <div class="abs group-title" style="left:1%; top:12.5%; width:18%; height:7%"><p>Chromatography<br>Electrophoresis</p></div>
+  <div class="abs group-title" style="left:22%; top:12.5%; width:27%; height:7%"><p>Ionization</p></div>
+  <div class="abs group-title" style="left:52%; top:12.5%; width:18%; height:7%"><p>MS<br>MS/MS</p></div>
+  <div class="abs group-title" style="left:72%; top:12.5%; width:27%; height:7%"><p>Scan mode<br>Acquisition mode</p></div>
+
+  <!-- 第 1 欄：分離 -->
+  <div class="abs method-cards" style="left:1%; top:22.5%; width:18%; height:68%">
+    <div class="method-card"><img src="figures/sep-lc.png" alt=""><span>LC</span></div>
+    <div class="method-card"><img src="figures/sep-gc.png" alt=""><span>GC</span></div>
+    <div class="method-card"><img src="figures/sep-ce.png" alt=""><span>CE</span></div>
+    <div class="method-card"><img src="figures/sep-sfc.png" alt=""><span>SFC</span></div>
+  </div>
+
+  <!-- 第 2 欄：離子化 -->
+  <div class="abs method-cards" style="left:22%; top:22.5%; width:27%; height:68%">
+    <div class="method-card"><img src="figures/ion-ei.png" alt=""><span>EI</span></div>
+    <div class="method-card"><img src="figures/ion-ci.png" alt=""><span>CI</span></div>
+    <div class="method-card"><img src="figures/ion-icp.png" alt=""><span>ICP</span></div>
+    <div class="method-card"><img src="figures/ion-esi.png" alt=""><span>ESI</span></div>
+    <div class="method-card"><img src="figures/ion-apci.png" alt=""><span>APCI</span></div>
+    <div class="method-card"><img src="figures/ion-appi.png" alt=""><span>APPI</span></div>
+    <div class="method-card"><img src="figures/ion-maldi.png" alt=""><span>MALDI</span></div>
+    <div class="method-card"><img src="figures/ion-desi.png" alt=""><span>DESI</span></div>
+  </div>
+
+  <!-- 第 3 欄：質量分析器 -->
+  <div class="abs method-cards" style="left:52%; top:22.5%; width:18%; height:68%">
+    <div class="method-card"><img src="figures/ms-tof.png" alt=""><span>TOF</span></div>
+    <div class="method-card"><img src="figures/ms-quadrupole.png" alt=""><span>Quadrupole</span></div>
+    <div class="method-card"><img src="figures/ms-2d-ion-trap.png" alt=""><span>2D Ion Trap</span></div>
+    <div class="method-card"><img src="figures/ms-3d-ion-trap.png" alt=""><span>3D Ion Trap</span></div>
+    <div class="method-card"><img src="figures/ms-orbitrap.png" alt=""><span>Orbitrap</span></div>
+  </div>
+
+  <!-- 第 4 欄：掃描／擷取模式（由上往下排） -->
+  <div class="abs method-cards col" style="left:72%; top:22.5%; width:27%; height:51%">
+    <div class="method-card"><img src="figures/scan-product-ion.png" alt=""><span>Product ion</span></div>
+    <div class="method-card"><img src="figures/scan-mrm.png" alt=""><span>MRM</span></div>
+    <div class="method-card"><img src="figures/scan-dda.png" alt=""><span>DDA</span></div>
+    <div class="method-card"><img src="figures/scan-precursor-ion.png" alt=""><span>Precursor ion</span></div>
+    <div class="method-card"><img src="figures/scan-prm.png" alt=""><span>PRM</span></div>
+    <div class="method-card"><img src="figures/scan-dia.png" alt=""><span>DIA</span></div>
+    <div class="method-card"><img src="figures/scan-neutral-loss.png" alt=""><span>Neutral loss</span></div>
+  </div>
+
+</section>
+
+<!-- ========== 3. MS 分析平台組成（加上範例） ========== -->
+<section data-transition="fade-in slide-out">
   <h2>Recall: Configuration of MS-Based Analytical Platform</h2>
 
   <!-- 分組標題 -->
@@ -110,10 +166,13 @@
   </div>
 </section>
 
-<!-- ##### 垂直組：第 3–5 頁　資料型態：MS1 → MS2 → 特徵表（↓ 往下翻） ##### -->
+</section>
+<!-- ##### 垂直組結束：第 2–3 頁 ##### -->
+
+<!-- ##### 垂直組：第 4–6 頁　資料型態：MS1 → MS2 → 特徵表（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 3. LC-MS 資料：MS1 三維示意 ========== -->
+<!-- ========== 4. LC-MS 資料：MS1 三維示意 ========== -->
 <!-- 3 → 4 原地淡入淡出：兩頁的圖位置相同，看起來像 MS2 直接疊上去 -->
 <section class="figslide" data-transition="slide-in fade-out">
   <h2>Data Type and Variables</h2>
@@ -140,7 +199,7 @@
   </aside>
 </section>
 
-<!-- ========== 4. LC-MS 資料：MS2 碎片譜示意 ========== -->
+<!-- ========== 5. LC-MS 資料：MS2 碎片譜示意 ========== -->
 <section class="figslide" data-transition="fade-in slide-out">
   <h2>Data Type and Variables</h2>
   <h3>選定前驅離子 → 隔離與碎裂 → MS2 碎片譜</h3>
@@ -167,7 +226,7 @@
   </aside>
 </section>
 
-<!-- ========== 5. Feature Table 示意 ========== -->
+<!-- ========== 6. Feature Table 示意 ========== -->
 <section class="ftable">
   <h2>Feature Table</h2>
   <h3>特徵表：前處理後得到的資料矩陣（示意數值）</h3>
@@ -227,12 +286,12 @@
 </section>
 
 </section>
-<!-- ##### 垂直組結束：第 3–5 頁 ##### -->
+<!-- ##### 垂直組結束：第 4–6 頁 ##### -->
 
-<!-- ##### 垂直組：第 6–7 頁　代謝物鑑定信心（↓ 往下翻） ##### -->
+<!-- ##### 垂直組：第 7–8 頁　代謝物鑑定信心（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 6. 代謝物鑑定信心等級（定義＋實例） ========== -->
+<!-- ========== 7. 代謝物鑑定信心等級（定義＋實例） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide mid idmerged" -->
 ## Identification Confidence
@@ -260,7 +319,7 @@ Note:
 - 課堂例子：MetaboAnalyst 6.0 Protocol 的 Box 1 稱光譜庫比對為 level 2（MSI），Extended Data 又寫 level 2a（Schymanski），兩套等級混用。
 </textarea></section>
 
-<!-- ========== 7. 鑑定機率（Metz 2025） ========== -->
+<!-- ========== 8. 鑑定機率（Metz 2025） ========== -->
 <section class="metz">
   <h2>Identification Probability</h2>
   <h3>Metz et al., Anal Chem 2025</h3>
@@ -293,12 +352,12 @@ Note:
 </section>
 
 </section>
-<!-- ##### 垂直組結束：第 6–7 頁 ##### -->
+<!-- ##### 垂直組結束：第 7–8 頁 ##### -->
 
-<!-- ##### 垂直組：第 8–12 頁　MS/MS 光譜資料庫（↓ 往下翻） ##### -->
+<!-- ##### 垂直組：第 9–13 頁　MS/MS 光譜資料庫（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 8. MS/MS 光譜資料庫：判讀原則 ========== -->
+<!-- ========== 9. MS/MS 光譜資料庫：判讀原則 ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide mid principles" -->
 ## MS/MS Spectral Databases
@@ -324,7 +383,7 @@ Note:
 原第 4 頁列的 TMIC 資料庫（DrugBank、T3DB、SMPDB、FooDB、Yeast／Bovine／E. coli Metabolome DB）是化合物知識庫，不在本次 MS/MS 光譜庫比較範圍。
 </textarea></section>
 
-<!-- ========== 9. MS/MS 光譜資料庫：核心實驗光譜庫 ========== -->
+<!-- ========== 10. MS/MS 光譜資料庫：核心實驗光譜庫 ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense dbtable" -->
 ## MS/MS Spectral Databases
@@ -355,7 +414,7 @@ Note:
 - mzCloud：https://www.mzcloud.org/ ；https://www.mzcloud.org/Terms
 </textarea></section>
 
-<!-- ========== 10. MS/MS 光譜資料庫：整合型光譜平台 ========== -->
+<!-- ========== 11. MS/MS 光譜資料庫：整合型光譜平台 ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense dbtable" -->
 ## MS/MS Spectral Databases
@@ -386,7 +445,7 @@ Note:
 - MS-DIAL：https://systemsomicslab.github.io/compms/msdial/main.html ；https://zenodo.org/records/13261737
 </textarea></section>
 
-<!-- ========== 11. MS/MS 光譜資料庫：專門型與預測資源（1／2） ========== -->
+<!-- ========== 12. MS/MS 光譜資料庫：專門型與預測資源（1／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense dbtable" -->
 ## MS/MS Spectral Databases
@@ -414,7 +473,7 @@ Note:
 - MINEs：https://minedatabase.ci.northwestern.edu/ ；https://doi.org/10.1093/bioinformatics/btac331
 </textarea></section>
 
-<!-- ========== 12. MS/MS 光譜資料庫：專門型與預測資源（2／2） ========== -->
+<!-- ========== 13. MS/MS 光譜資料庫：專門型與預測資源（2／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense dbtable" -->
 ## MS/MS Spectral Databases
@@ -443,12 +502,12 @@ Note:
 </textarea></section>
 
 </section>
-<!-- ##### 垂直組結束：第 8–12 頁 ##### -->
+<!-- ##### 垂直組結束：第 9–13 頁 ##### -->
 
-<!-- ##### 垂直組：第 13–17 頁　分析流程（↓ 往下翻） ##### -->
+<!-- ##### 垂直組：第 14–18 頁　分析流程（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 13. 分析流程：流程圖 ========== -->
+<!-- ========== 14. 分析流程：流程圖 ========== -->
 <section class="workflow">
   <h2>Analysis Workflow</h2>
 
@@ -514,7 +573,7 @@ Note:
   </aside>
 </section>
 
-<!-- ========== 14. 分析流程：階段說明（1／2） ========== -->
+<!-- ========== 15. 分析流程：階段說明（1／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide mid stages" -->
 ## Analysis Workflow
@@ -543,7 +602,7 @@ Note:
 - ⑤ 過濾門檻與影響：Schiffman C, et al. BMC Bioinformatics 2019. doi:10.1186/s12859-019-2871-9
 </textarea></section>
 
-<!-- ========== 15. ProteoWizard msConvert ========== -->
+<!-- ========== 16. ProteoWizard msConvert ========== -->
 <section class="ma pwiz">
   <h2>ProteoWizard msConvert</h2>
   <img class="ma-logo" src="figures/proteowizard-logo.jpg" alt="ProteoWizard logo">
@@ -596,7 +655,7 @@ Note:
   </aside>
 </section>
 
-<!-- ========== 16. 分析流程：階段說明（2／2） ========== -->
+<!-- ========== 17. 分析流程：階段說明（2／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide mid stages" -->
 ## Analysis Workflow
@@ -629,7 +688,7 @@ Note:
 - ⑩ QC 回報與資料存放：Kirwan JA, et al. Metabolomics 2022;18:70. doi:10.1007/s11306-022-01926-3；Yurekten O, et al. Nucleic Acids Res 2024. doi:10.1093/nar/gkad1045；Sud M, et al. Nucleic Acids Res 2016. doi:10.1093/nar/gkv1042
 </textarea></section>
 
-<!-- ========== 17. MetaboLights ========== -->
+<!-- ========== 18. MetaboLights ========== -->
 <section class="ma">
   <h2>MetaboLights</h2>
   <div class="ma-info">
@@ -647,7 +706,7 @@ Note:
       <li><b>是什麼：</b>EMBL-EBI 維運的代謝體學公開資料庫，跨物種、跨技術；每個研究收錄原始實驗資料與描述樣本、分析方法的詮釋資料，也連到代謝物結構、參考光譜與生物角色。</li>
       <li><b>為什麼重要：</b>多家主要期刊與歐洲生命科學資料基礎設施 ELIXIR 推薦的代謝體學資料存放處；部分期刊要求投稿時提供資料存放編號（如 MTBLS 編號）。對應流程圖最後一步「報告與資料存放」。</li>
       <li><b>怎麼用：</b>首頁可依代謝物、物種或研究搜尋；研究編號格式為 MTBLS＋數字。公開 API 在 2026-10-21 列出 3,554 個公開研究。</li>
-      <li><b>和本課的關係：</b>第 2 頁的 COVID-19 trans-omics 研究就是 MTBLS2542，本課 pyOpenMS 案例分析用的原始檔也從這裡下載。</li>
+      <li><b>和本課的關係：</b>第 3 頁的 COVID-19 trans-omics 研究就是 MTBLS2542，本課 pyOpenMS 案例分析用的原始檔也從這裡下載。</li>
       <li><b>近期發展：</b>MetaboLights Labs，以 Galaxy 執行全庫標準化的分析流程，方便重複利用公開資料。</li>
     </ul>
     <p>引用：Yurekten O, et al. MetaboLights: open data repository for metabolomics. Nucleic Acids Res 2024;52(D1):D640–D646. doi:10.1093/nar/gkad1045。網站內容依 EMBL-EBI Terms of Use 提供；程式碼以 Apache 2.0 公開於 github.com/EBI-Metabolights。</p>
@@ -655,12 +714,12 @@ Note:
 </section>
 
 </section>
-<!-- ##### 垂直組結束：第 13–17 頁 ##### -->
+<!-- ##### 垂直組結束：第 14–18 頁 ##### -->
 
-<!-- ##### 垂直組：第 18–24 頁　分析軟體：開源、商用與選擇（↓ 往下翻） ##### -->
+<!-- ##### 垂直組：第 19–25 頁　分析軟體：開源、商用與選擇（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 18. 開源軟體：主要工具功能比較（1／2） ========== -->
+<!-- ========== 19. 開源軟體：主要工具功能比較（1／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense features" -->
 ## Open-source / Freeware
@@ -676,7 +735,7 @@ Note:
 | **OpenMS** | CLI（TOPP）、Python API（pyOpenMS）、GUI（TOPPView）；可接入 Galaxy、Nextflow | LC-MS、IMS-MS（FAIMS、PASEF）；MS/MS：DDA、DIA（僅標靶式 OpenSWATH） | feature detection、alignment／feature linking、adduct grouping、accurate mass search | **適合建構模組化、可重現的大規模質譜流程**，提供約 150 個工具；但需自行串接與調參，入門門檻高。 |
 </textarea></section>
 
-<!-- ========== 19. 開源軟體：主要工具功能比較（2／2） ========== -->
+<!-- ========== 20. 開源軟體：主要工具功能比較（2／2） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense features" -->
 ## Open-source / Freeware
@@ -690,7 +749,7 @@ Note:
 | **Workflow4<wbr>Metabolomics** | Web GUI（Galaxy） | LC-MS、GC-MS、DI／FIA-MS、NMR；MS/MS：DDA；表格：峰強度 | preprocessing（XCMS、CAMERA）、normalization／QC、statistics（PLS／OPLS）、annotation | **以 Galaxy 串接完整流程，結果可分享、可重現**，工具也能安裝到其他 Galaxy 伺服器；但未註冊使用有額度限制。 |
 </textarea></section>
 
-<!-- ========== 20. 開源軟體：授權與使用條件 ========== -->
+<!-- ========== 21. 開源軟體：授權與使用條件 ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide mid" -->
 ## Open-source / Freeware
@@ -711,7 +770,7 @@ Note:
 <p class="small">* 可免費商用；再散布（含修改後）時須遵守原授權：GPL／LGPL 須向取得者提供原始碼，CC BY 須標示出處。授權資訊查核日期：2026 年 10 月。</p>
 </textarea></section>
 
-<!-- ========== 21. 商用軟體比較（1／3） ========== -->
+<!-- ========== 22. 商用軟體比較（1／3） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense commercial" -->
 ## Commercial / Licensed
@@ -739,7 +798,7 @@ Note:
 - MetaboScape 2026b（官方產品頁）：https://www.bruker.com/en/products-and-solutions/mass-spectrometry/ms-software/metaboscape.html
 </textarea></section>
 
-<!-- ========== 22. 商用軟體比較（2／3） ========== -->
+<!-- ========== 23. 商用軟體比較（2／3） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense commercial" -->
 ## Commercial / Licensed
@@ -764,7 +823,7 @@ Note:
 - MassHunter Explorer 2.0（說明手冊 D0039646，2025/9）：https://www.agilent.com/cs/library/usermanuals/public/D0039646%20MassHunter%20Explorer%20Introduction%20Workbook.pdf
 </textarea></section>
 
-<!-- ========== 23. 商用軟體比較（3／3） ========== -->
+<!-- ========== 24. 商用軟體比較（3／3） ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide dense commercial" -->
 ## Commercial / Licensed
@@ -790,7 +849,7 @@ Note:
 - biocrates 試劑套組儀器相容性（MxP Quant 500 XL）：https://biocrates.com/mxp-quant-500-xl/
 </textarea></section>
 
-<!-- ========== 24. 如何選擇軟體：商用 vs 開源 ========== -->
+<!-- ========== 25. 如何選擇軟體：商用 vs 開源 ========== -->
 <section data-markdown><textarea data-template>
 <!-- .slide: class="table-slide choose" -->
 ## Commercial vs Open-source / Freeware
@@ -835,12 +894,12 @@ Note:
 </textarea></section>
 
 </section>
-<!-- ##### 垂直組結束：第 18–24 頁 ##### -->
+<!-- ##### 垂直組結束：第 19–25 頁 ##### -->
 
-<!-- ##### 垂直組：第 25–26 頁　MetaboAnalyst（↓ 往下翻） ##### -->
+<!-- ##### 垂直組：第 26–27 頁　MetaboAnalyst（↓ 往下翻） ##### -->
 <section>
 
-<!-- ========== 25. MetaboAnalyst 6.0 ========== -->
+<!-- ========== 26. MetaboAnalyst 6.0 ========== -->
 <section class="ma">
   <h2>MetaboAnalyst 6.0</h2>
   <img class="ma-logo" src="figures/metaboanalyst6-logo.png" alt="MetaboAnalyst 6.0 logo">
@@ -860,7 +919,7 @@ Note:
   </aside>
 </section>
 
-<!-- ========== 26. MetaboAnalyst 7.0 ========== -->
+<!-- ========== 27. MetaboAnalyst 7.0 ========== -->
 <section class="ma">
   <h2>MetaboAnalyst 7.0</h2>
   <img class="ma-logo" src="figures/metaboanalyst7-logo.png" alt="MetaboAnalyst 7.0 logo">
@@ -881,7 +940,7 @@ Note:
 </section>
 
 </section>
-<!-- ##### 垂直組結束：第 25–26 頁 ##### -->
+<!-- ##### 垂直組結束：第 26–27 頁 ##### -->
 
 </div>
 </div>
